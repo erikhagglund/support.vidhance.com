@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+	
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="generator" content="Hugo 0.14" />
+<title>  &middot; Vidhance Support </title>
+<link rel="canonical" href="http://support.vidhance.com/android/api/processing/">
+<link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/text.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/menu.css">
+<link rel="stylesheet" href="/css/animation.css">
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/zenburn.min.css">
+<link rel="stylesheet" href="/css/local.css">
+
+</head>
+<body>
+	<header class="no-animation">
+	<a href="/"><img class="no-animation" src="/img/logotype.png"></a>
+	<a id="nav-open-btn" class="nav-btn" href="#">Navigation</a>
+</header>
+
+	<nav class="no-animation">
+	
+	<ul>
+	
+		<li >
+			<a href="/start/">start</a>
+			
+		</li>
+	
+		<li >
+			<a href="/vidview/">vidview</a>
+			
+		</li>
+	
+		<li >
+			<a href="/android/">android</a>
+			<ul>
+
+	<li>
+		<a href="/android/gettingstarted/">getting started</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/apireference/">API reference</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/faq/">FAQ</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/validate/">validate</a>
+		
+	</li>
+
+</ul>
+
+		</li>
+	
+		<li >
+			<a href="/pc/">pc</a>
+			<ul>
+
+	<li>
+		<a href="/pc/download/">download</a>
+		
+	</li>
+
+</ul>
+
+		</li>
+	
+	</ul>
+	<a id="nav-close-btn" class="close-btn" href="#">Return to Content</a>
+</nav>
+
+	<main class="no-animation">
+		<section><article
+	
+	>
+	<header><h1></h1></header>
+	
+	
+	<main>
+		
+			
+
+<p><a href="../../apireference/">Back to API overview</a></p>
+
+<h1 id="processing-frames:9633d27b7a2b1f04c4bfd4a47cc90697">Processing frames</h1>
+
+<h2 id="overview:9633d27b7a2b1f04c4bfd4a47cc90697">Overview</h2>
+
+<hr />
+
+<h3 id="vidhance-context-start:9633d27b7a2b1f04c4bfd4a47cc90697">vidhance_context_start</h3>
+
+<p>Prepares a Vidhance context for a new video stream. This function must be called before the first frame of the stream is sent to Vidhance.</p>
+
+<pre><code class="language-c">void vidhance_context_start(vidhance_context_t context);
+</code></pre>
+
+<h4 id="parameters:9633d27b7a2b1f04c4bfd4a47cc90697">Parameters</h4>
+
+<p><em>context</em> A Vidhance context.</p>
+
+<hr />
+
+<h3 id="vidhance-context-stop:9633d27b7a2b1f04c4bfd4a47cc90697">vidhance_context_stop</h3>
+
+<p>Ends a processing session for the Vidhance context. This function must be called after the last frame of the stream is sent to Vidhance.</p>
+
+<pre><code class="language-c">void vidhance_context_stop(vidhance_context_t context);
+</code></pre>
+
+<h4 id="parameters-1:9633d27b7a2b1f04c4bfd4a47cc90697">Parameters</h4>
+
+<p><em>context</em> A Vidhance context.</p>
+
+<hr />
+
+<h3 id="vidhance-context-process:9633d27b7a2b1f04c4bfd4a47cc90697">vidhance_context_process</h3>
+
+<p>Process a frame in the specified context. Returns a new buffer containing the resulting frame.</p>
+
+<pre><code class="language-c">vidhance_frame_t vidhance_context_process(vidhance_context_t context, vidhance_frame_t frame);
+</code></pre>
+
+<h4 id="parameters-2:9633d27b7a2b1f04c4bfd4a47cc90697">Parameters</h4>
+
+<p><em>context</em> The context in which to process.</p>
+
+<p><em>frame</em> The input frame.</p>
+
+<hr />
+
+<h3 id="vidhance-context-process-output:9633d27b7a2b1f04c4bfd4a47cc90697">vidhance_context_process_output</h3>
+
+<p>Process a frame in the specified context using different buffers as input and output.</p>
+
+<pre><code class="language-c">void vidhance_context_process_output(vidhance_context_t context, vidhance_frame_t input, vidhance_frame_t output);
+</code></pre>
+
+<h4 id="parameters-3:9633d27b7a2b1f04c4bfd4a47cc90697">Parameters</h4>
+
+<p><em>context</em> The context in which to process.</p>
+
+<p><em>input</em> The input frame.</p>
+
+<p><em>output</em> The output frame where the result is written.</p>
+
+<hr />
+
+<h3 id="vidhance-context-process-preview:9633d27b7a2b1f04c4bfd4a47cc90697">vidhance_context_process_preview</h3>
+
+<p>Process the preview buffer.</p>
+
+<pre><code class="language-c">void vidhance_context_process_preview(vidhance_context_t context, vidhance_frame_t input);
+</code></pre>
+
+<h4 id="parameters-4:9633d27b7a2b1f04c4bfd4a47cc90697">Parameters</h4>
+
+<p><em>context</em> The context in which to process.</p>
+
+<p><em>input</em> The input frame.</p>
+
+<hr />
+
+<h3 id="vidhance-int-vector-2d-t:9633d27b7a2b1f04c4bfd4a47cc90697">vidhance_int_vector_2d_t</h3>
+
+<p>2D vector used by Vidhance.</p>
+
+<pre><code class="language-c">typedef struct {
+	int x;
+	int y;
+} vidhance_int_vector_2d_t;
+vidhance_int_vector_2d_t vidhance_int_vector_2d_new(int x, int y);
+</code></pre>
+
+<hr />
+
+<h3 id="vidhance-image-t:9633d27b7a2b1f04c4bfd4a47cc90697">vidhance_image_t</h3>
+
+<p>The base image class used by Vidhance.</p>
+
+<pre><code class="language-c">typedef struct _vidhance_image_t* vidhance_image_t;
+</code></pre>
+
+<hr />
+
+<h3 id="vidhance-date-time-t:9633d27b7a2b1f04c4bfd4a47cc90697">vidhance_date_time_t</h3>
+
+<p>Object representing timestamps. 1 tick = 100 nanoseconds.</p>
+
+<pre><code class="language-c">typedef struct {
+	uint64_t ticks;
+} vidhance_date_time_t;
+vidhance_date_time_t vidhance_date_time_new(const uint64_t ticks);
+vidhance_date_time_t vidhance_date_time_from_date(int year, int month, int day);
+vidhance_date_time_t vidhance_date_time_from_time(int hour, int minute, int second, int millisecond);
+vidhance_date_time_t vidhance_date_time_from_date_time(int year, int month, int day, int hour, int minute, int second, int millisecond);
+vidhance_date_time_t vidhance_date_time_get_now();
+uint64_t vidhance_date_time_get_ticks(const vidhance_date_time_t);
+int vidhance_date_time_get_millisecond(const vidhance_date_time_t);
+int vidhance_date_time_get_second(const vidhance_date_time_t);
+int vidhance_date_time_get_minute(const vidhance_date_time_t);
+int vidhance_date_time_get_hour(const vidhance_date_time_t);
+int vidhance_date_time_get_day(const vidhance_date_time_t);
+int vidhance_date_time_get_month(const vidhance_date_time_t);
+int vidhance_date_time_get_year(const vidhance_date_time_t);
+</code></pre>
+
+<hr />
+
+<h3 id="vidhance-time-span-t:9633d27b7a2b1f04c4bfd4a47cc90697">vidhance_time_span_t</h3>
+
+<p>Object representing time durations. 1 tick = 100 nanoseconds.</p>
+
+<pre><code class="language-c">typedef struct {
+	int64_t ticks;
+} vidhance_time_span_t;
+vidhance_time_span_t vidhance_time_span_new(int64_t ticks);
+vidhance_time_span_t vidhance_time_span_from_data(int hour, int minute, int second, int millisecond);
+int64_t vidhance_time_span_get_ticks(const vidhance_time_span_t);
+vidhance_time_span_t vidhance_time_span_get_negated(const vidhance_time_span_t);
+int64_t vidhance_time_span_get_total_milliseconds(const vidhance_time_span_t);
+int64_t vidhance_time_span_get_total_seconds(const vidhance_time_span_t);
+int64_t vidhance_time_span_get_total_minutes(const vidhance_time_span_t);
+int64_t vidhance_time_span_get_total_hours(const vidhance_time_span_t);
+int64_t vidhance_time_span_get_total_days(const vidhance_time_span_t);
+int64_t vidhance_time_span_get_total_weeks(const vidhance_time_span_t);
+vidhance_time_span_t vidhance_time_span_from_milliseconds(const double count);
+vidhance_time_span_t vidhance_time_span_from_seconds(const double count);
+vidhance_time_span_t vidhance_time_span_from_minutes(const double count);
+vidhance_time_span_t vidhance_time_span_from_hours(const double count);
+vidhance_time_span_t vidhance_time_span_from_days(const double count);
+vidhance_time_span_t vidhance_time_span_from_weeks(const double count);
+</code></pre>
+
+<hr />
+
+<h3 id="vidhance-header-t:9633d27b7a2b1f04c4bfd4a47cc90697">vidhance_header_t</h3>
+
+<p>A header object holding an image and metadata.</p>
+
+<pre><code class="language-c">typedef struct _vidhance_frame_header_t* vidhance_frame_header_t;
+</code></pre>
+
+<hr />
+
+<h3 id="vidhance-graphic-buffer-t:9633d27b7a2b1f04c4bfd4a47cc90697">vidhance_graphic_buffer_t</h3>
+
+<p>Corresponds to the GraphicBuffer class in Android.</p>
+
+<pre><code class="language-c">typedef struct _vidhance_graphic_buffer_t* vidhance_graphic_buffer_t;
+</code></pre>
+
+<hr />
+
+<h3 id="vidhance-graphic-buffer-yuv-420-semiplanar-new:9633d27b7a2b1f04c4bfd4a47cc90697">vidhance_graphic_buffer_yuv_420_semiplanar_new</h3>
+
+<p>Function for creating a YUV420 image from a GraphicBuffer in Android.</p>
+
+<pre><code class="language-c">vidhance_image_t vidhance_graphic_buffer_yuv_420_semiplanar_new(vidhance_graphic_buffer_t buffer, vidhance_int_vector_2d_t size, int stride, int uv_offset);
+</code></pre>
+
+<h4 id="parameters-5:9633d27b7a2b1f04c4bfd4a47cc90697">Parameters</h4>
+
+<p><em>buffer</em> The buffer containing the image.</p>
+
+<p><em>size</em> Image resolution.</p>
+
+<p><em>stride</em> Image stride in bytes</p>
+
+<p><em>uv_offset</em> Offset in bytes to the uv plane in the buffer.</p>
+
+<hr />
+
+<h2 id="example:9633d27b7a2b1f04c4bfd4a47cc90697">Example</h2>
+
+<p>Prepare the Vidhance context for a new video session.</p>
+
+<pre><code class="language-c">vidhance_context_start(context);
+</code></pre>
+
+<p>Create <code>vidhance_image_t</code> from Android GraphicBuffer.</p>
+
+<pre><code class="language-c">vidhance_image_t image = vidhance_graphic_buffer_yuv_420_semiplanar_new(buffer, vidhance_int_vector_2d_new(1920, 1080), 1920, 1920 * 1080);
+</code></pre>
+
+<p>Create <code>vidhance_header_t</code> from metadata.</p>
+
+<pre><code class="language-c">vidhance_header_t header = vidhance_header_new(vidhance_date_time_new(timestamp_ticks), vidhance_time_span_new(lifetime_ticks),
+		readout_ticks, focalLengthPixels, vidhance_time_span_new(exposureTime_ticks));
+</code></pre>
+
+<p>Create <code>vidhance_frame_t</code> from header and image.</p>
+
+<pre><code class="language-c">vidhance_frame_t frame = vidhance_frame_from_image(header, image);
+</code></pre>
+
+<p>Process frame.</p>
+
+<pre><code class="language-c">vidhance_context_process_output(context, inputFrame, outputFrame);
+</code></pre>
+
+<p>Process preview frames.</p>
+
+<pre><code class="language-c">vidhance_context_process_preview(context, previewFrame);
+</code></pre>
+
+<p>End the video session.</p>
+
+<pre><code class="language-c">vidhance_context_stop(context);
+</code></pre>
+
+		
+		</main>
+	<footer></footer>
+</article>
+</section>
+	</main>
+	<footer>
+	
+	<p>copyright &copy; Imint Image Intelligence AB</p>
+</footer>
+
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/script/modernizr.js"></script>
+<script src="/script/main.js"></script>
+<script>
+	$(document).ready(function() {
+		
+
+		if($(window).width() > 831) {
+			$(window).scroll(function(e) {
+				if($(document).scrollTop() > 60) {
+					$('body > header').removeClass('no-animation');
+					$('body > nav').removeClass('no-animation');
+					$('body > header > a > img').removeClass('no-animation');
+					
+					$('body > header').addClass('scrolledDown');
+					$('body > nav').addClass('scrolledDown');
+				}
+				else {
+					$('body > header').removeClass('scrolledDown');
+					$('body > nav').removeClass('scrolledDown');
+				}
+			});
+		}
+
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+			$("video").prop("controls", true);
+		}
+	})
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+$('#downloadForm').on('submit', function(e) {
+	key = $("input:first").val();
+	url = "https://aurora.imint.se/data/"+key+"/vidhance-sdk-pc/vidhance_0.7.0_32bit.zip";
+	$('#hiddenIFrame').attr("src", url);
+	return false;
+});
+
+var $_Tawk_API={},$_Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/550802b2059b265f5423f78e/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<script>
+if (document.URL.search("localhost") == -1) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69480574-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+	
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="generator" content="Hugo 0.14" />
+<title> Evaluate Vidhance Mobile &middot; Vidhance Support </title>
+<link rel="canonical" href="http://support.vidhance.com/android/evaluate/">
+<link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/text.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/menu.css">
+<link rel="stylesheet" href="/css/animation.css">
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/zenburn.min.css">
+<link rel="stylesheet" href="/css/local.css">
+
+</head>
+<body>
+	<header class="no-animation">
+	<a href="/"><img class="no-animation" src="/img/logotype.png"></a>
+	<a id="nav-open-btn" class="nav-btn" href="#">Navigation</a>
+</header>
+
+	<nav class="no-animation">
+	
+	<ul>
+	
+		<li >
+			<a href="/start/">start</a>
+			
+		</li>
+	
+		<li >
+			<a href="/vidview/">vidview</a>
+			
+		</li>
+	
+		<li >
+			<a href="/android/">android</a>
+			<ul>
+
+	<li>
+		<a href="/android/gettingstarted/">getting started</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/apireference/">API reference</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/faq/">FAQ</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/validate/">validate</a>
+		
+	</li>
+
+</ul>
+
+		</li>
+	
+		<li >
+			<a href="/pc/">pc</a>
+			<ul>
+
+	<li>
+		<a href="/pc/download/">download</a>
+		
+	</li>
+
+</ul>
+
+		</li>
+	
+	</ul>
+	<a id="nav-close-btn" class="close-btn" href="#">Return to Content</a>
+</nav>
+
+	<main class="no-animation">
+		<section><article
+	
+	>
+	<header><h1>Evaluate Vidhance Mobile</h1></header>
+	
+	
+	<main>
+		
+			<!-- # Introduction
+This section describes how to download and flash the files necessary to evaluate Vidhance Mobile on a Nexus 6 device with Android 5.1.
+
+# Prerequisites
+## PC
+We recommend using a Ubuntu 14.04 LTS. You will need to install ADB and fastboot:
+
+```sh
+sudo apt-get install phablet-tools
+```
+
+### Downloading files
+1. Create a folder
+2. Download the [download script](download.sh) and run it inside the folder
+3. Enter your key to start downloading the necessary files
+
+## Phone
+
+### Enabling USB debugging
+1. Go to the *Settings* app on your device.
+2. Select *About phone*
+3. Tap *Build number* seven times to unlock developer options
+4. You should see a message that confirms you have enabled the developer options
+5. Go back to the Settings menu
+6. Select *Developer options*
+7. Check the *USB debugging* box
+8. Press OK when asked: *Allow USB debugging?*
+9. Connect the device to a USB port on your computer
+10. Press OK when asked: *Allow USB debugging?* with the computer's RSA key fingerprint displayed.
+11. To verify, run the command:
+
+    ```sh
+    adb devices
+    ```
+12. If the device is listed as *device* you are all set. If it is listed as *unauthorized*, restart the ADB server:
+
+    ```sh
+    adb kill-server
+    ```
+
+    ```sh
+    adb start-server
+    ```
+and you should be asked to allow USB debugging (see step 6).
+
+# Rooting
+Skip this step if you already have a rooted version of Android 5.1 on the device and continue to **Installing Vidhance**.
+## Booting device into bootloader
+1. Use ADB to reboot the device into the bootloader:
+
+    ```sh
+    adb reboot-bootloader
+    ```
+2. Make sure the device is unlocked by using the fastboot command and follow the instructions on the screen of the device:
+
+    ```sh
+    fastboot oem unlock
+    ```
+
+## Flash rooted boot image
+1. Run the script for flashing Android:
+
+    ```sh
+    . flash_android.sh
+    ```
+2. Wait for the phone to reboot.
+
+# Installing Vidhance
+1. Run the script for flashing Vidhance:
+
+    ```sh
+    . flash_vidhance.sh
+    ```
+2. Wait for the phone to reboot.
+
+# Running
+1. Start the default camera application.
+2. Switch to video capture.
+3. You should see a viewfinder in the preview representing the area that will be captured in the video.
+4. Start recording.
+5. The resulting video should be stabilized and contain an Imint logotype and a trace showing the stabilization for the x and y axes. -->
+
+		
+		</main>
+	<footer></footer>
+</article>
+</section>
+	</main>
+	<footer>
+	
+	<p>copyright &copy; Imint Image Intelligence AB</p>
+</footer>
+
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/script/modernizr.js"></script>
+<script src="/script/main.js"></script>
+<script>
+	$(document).ready(function() {
+		
+
+		if($(window).width() > 831) {
+			$(window).scroll(function(e) {
+				if($(document).scrollTop() > 60) {
+					$('body > header').removeClass('no-animation');
+					$('body > nav').removeClass('no-animation');
+					$('body > header > a > img').removeClass('no-animation');
+					
+					$('body > header').addClass('scrolledDown');
+					$('body > nav').addClass('scrolledDown');
+				}
+				else {
+					$('body > header').removeClass('scrolledDown');
+					$('body > nav').removeClass('scrolledDown');
+				}
+			});
+		}
+
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+			$("video").prop("controls", true);
+		}
+	})
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+$('#downloadForm').on('submit', function(e) {
+	key = $("input:first").val();
+	url = "https://aurora.imint.se/data/"+key+"/vidhance-sdk-pc/vidhance_0.7.0_32bit.zip";
+	$('#hiddenIFrame').attr("src", url);
+	return false;
+});
+
+var $_Tawk_API={},$_Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/550802b2059b265f5423f78e/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<script>
+if (document.URL.search("localhost") == -1) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69480574-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+</html>

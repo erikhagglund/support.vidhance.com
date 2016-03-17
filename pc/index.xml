@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pcs on Vidhance Support</title>
+    <link>http://support.vidhance.com/pc/</link>
+    <description>Recent content in Pcs on Vidhance Support</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://support.vidhance.com/pc/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Download Vidhance SDK for PC</title>
+      <link>http://support.vidhance.com/pc/download/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://support.vidhance.com/pc/download/</guid>
+      <description>&lt;p&gt;To download Vidhance SDK for PC enter your key below and press download.
+&lt;form id=&#34;downloadForm&#34; action=&#34;#&#34;&gt;
+&lt;label&gt;Product key: &lt;/label&gt;&lt;input type=&#34;text&#34;&gt;&lt;/input&gt;
+&lt;input type=&#34;submit&#34; value=&#34;Download&#34;&gt;&lt;/input&gt;
+&lt;/form&gt;
+&lt;iframe src=&#34;&#34; id=&#34;hiddenIFrame&#34; style=&#34;display:none;&#34; frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gettings started with Vidhance SDK for PC</title>
+      <link>http://support.vidhance.com/pc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://support.vidhance.com/pc/</guid>
+      <description>
+
+&lt;h1 id=&#34;download-the-vidhance-library:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Download the Vidhance library&lt;/h1&gt;
+
+&lt;p&gt;To download the Vidhance SDK library you need a key which you can use on &lt;a href=&#34;http://support.vidhance.com/pc/download&#34;&gt;this page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;using-the-vidhance-api:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Using the Vidhance API&lt;/h1&gt;
+
+&lt;h2 id=&#34;complete-code-examples:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Complete code examples&lt;/h2&gt;
+
+&lt;p&gt;There are complete code examples available &lt;a href=&#34;https://github.com/vidhance/example-vidhance-pc-cpp-stabilize-track&#34;&gt;here&lt;/a&gt; for running Vidhance with stabilizer and tracker.&lt;/p&gt;
+
+&lt;h2 id=&#34;initializing-and-creating-creating-a-vidhance-context:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Initializing and creating creating a Vidhance context&lt;/h2&gt;
+
+&lt;p&gt;Before you can use the Vidhance API you need to initialize it by calling the load function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;vidhance_load();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we can create settings for the context and then the context itself:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;vidhance_settings settings = vidhance_settings_new();
+vidhance_context context = vidhance_context_new(settings);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;configuring-settings:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Configuring settings&lt;/h2&gt;
+
+&lt;p&gt;It is recommend to use the default settings until you have successfully compiled and run. The Vidhance API enables you to configure the settings of different modules to optimize quality and performance for different needs. The available settings can be seen in &lt;em&gt;vidhance.h&lt;/em&gt;. Here is an example on how to configure stabilizer settings:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;vidhance_settings settings = vidhance_settings_new();
+vidhance_motion_settings settings_motion = vidhance_settings_getMotion(settings);
+vidhance_stabilizer_settings settings_stabilizer = vidhance_motion_settings_getStabilize(settings_motion);
+vidhance_stabilizer_settings_setMode(settings_stabilizer, VIDHANCE_STABILIZE_MODE_OPTICALFLOW);
+vidhance_stabilizer_settings_setShowTrace(settings_stabilizer, true);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;processing-frames:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Processing frames&lt;/h2&gt;
+
+&lt;p&gt;To process a frame you need to create a vidhance_frame and then call the process function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;const int stride = image.width * image.bytesPerPixel;
+kean_draw_rasterBgr raster = kean_draw_rasterBgr_new(image.width, image.height, stride, image.data);
+vidhance_frame input = vidhance_frame_fromImage(vidhance_frame_header_default(), raster);
+vidhance_frame output = vidhance_context_process(context, input);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;using-the-stabilizer:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Using the stabilizer&lt;/h2&gt;
+
+&lt;p&gt;Stabilization is active by default and this code can be used to activate a trace for the stabilization:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;vidhance_settings settings = vidhance_settings_new();
+vidhance_motion_settings settings_motion = vidhance_settings_getMotion(settings);
+vidhance_stabilizer_settings settings_stabilizer = vidhance_motion_settings_getStabilize(settings_motion);
+vidhance_stabilizer_settings_setShowTrace(settings_stabilizer, true);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is an example of how to process a frame and retrieve a transformation matrix from it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;vidhance_frame frame = vidhance_context_process(context, input);
+kean_math_floatTransform3D matrix = vidhance_stabilizer_getTransformFromFrame(frame);
+kean_math_floatSize3D translation = kean_math_floatTransform3D_getTranslation(matrix);
+kean_math_floatSize3D scaling = kean_math_floatTransform3D_getScaling(matrix);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;using-the-tracker:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Using the tracker&lt;/h2&gt;
+
+&lt;p&gt;Tracking is not active by default and this code can be used to activate it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;vidhance_settings settings = vidhance_settings_new();
+vidhance_motion_settings settings_motion = vidhance_settings_getMotion(settings);
+vidhance_tracker_settings settings_tracker = vidhance_motion_settings_getTracker(settings_motion);
+vidhance_tracker_settings_setMode(settings_tracker, VIDHANCE_TRACKER_IR);
+vidhance_tracker_settings_setVisualizeBounds(settings_stracker, true);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is an example of how to process a frame and retrieve the tracker bounds from it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;vidhance_motion motion = vidhance_context_getMotion(context);
+vidhance_tracker tracker = vidhance_motion_getTracker(motion);
+vidhance_tracker_instance tracker_instance = vidhance_tracker_start(tracker, startRegion);
+vidhance_frame frame = vidhance_context_process(context, input);
+kean_math_floatBox2D tracker_bounds = vidhance_tracker_instance_getBounds(tracker_instance);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

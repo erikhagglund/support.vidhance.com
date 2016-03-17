@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+	
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="generator" content="Hugo 0.14" />
+<title>  &middot; Vidhance Support </title>
+<link rel="canonical" href="http://support.vidhance.com/android/api/settings/">
+<link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/text.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/menu.css">
+<link rel="stylesheet" href="/css/animation.css">
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/zenburn.min.css">
+<link rel="stylesheet" href="/css/local.css">
+
+</head>
+<body>
+	<header class="no-animation">
+	<a href="/"><img class="no-animation" src="/img/logotype.png"></a>
+	<a id="nav-open-btn" class="nav-btn" href="#">Navigation</a>
+</header>
+
+	<nav class="no-animation">
+	
+	<ul>
+	
+		<li >
+			<a href="/start/">start</a>
+			
+		</li>
+	
+		<li >
+			<a href="/vidview/">vidview</a>
+			
+		</li>
+	
+		<li >
+			<a href="/android/">android</a>
+			<ul>
+
+	<li>
+		<a href="/android/gettingstarted/">getting started</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/apireference/">API reference</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/faq/">FAQ</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/validate/">validate</a>
+		
+	</li>
+
+</ul>
+
+		</li>
+	
+		<li >
+			<a href="/pc/">pc</a>
+			<ul>
+
+	<li>
+		<a href="/pc/download/">download</a>
+		
+	</li>
+
+</ul>
+
+		</li>
+	
+	</ul>
+	<a id="nav-close-btn" class="close-btn" href="#">Return to Content</a>
+</nav>
+
+	<main class="no-animation">
+		<section><article
+	
+	>
+	<header><h1></h1></header>
+	
+	
+	<main>
+		
+			
+
+<p><a href="../../apireference/">Back to API overview</a></p>
+
+<h1 id="creating-and-adjusting-settings:fa1a9aa7bf3e774ccda21a0a7b1222dd">Creating and adjusting settings</h1>
+
+<h2 id="overview:fa1a9aa7bf3e774ccda21a0a7b1222dd">Overview</h2>
+
+<hr />
+
+<h3 id="vidhance-settings-t:fa1a9aa7bf3e774ccda21a0a7b1222dd">vidhance_settings_t</h3>
+
+<p>The base settings object.</p>
+
+<pre><code>typedef struct _vidhance_settings_t* vidhance_settings_t;
+</code></pre>
+
+<hr />
+
+<h3 id="vidhance-settings-new:fa1a9aa7bf3e774ccda21a0a7b1222dd">vidhance_settings_new</h3>
+
+<p>Creates a new Vidhance settings object.</p>
+
+<pre><code>vidhance_settings_t vidhance_settings_new();
+</code></pre>
+
+<hr />
+
+<h3 id="vidhance-motion-settings-t:fa1a9aa7bf3e774ccda21a0a7b1222dd">vidhance_motion_settings_t</h3>
+
+<p>The motion settings object.</p>
+
+<pre><code>typedef struct _vidhance_motion_settings_t* vidhance_motion_settings_t;
+</code></pre>
+
+<hr />
+
+<h3 id="vidhance-settings-get-motion:fa1a9aa7bf3e774ccda21a0a7b1222dd">vidhance_settings_get_motion</h3>
+
+<p>Returns the motion settings object.</p>
+
+<pre><code>vidhance_motion_settings_t vidhance_settings_get_motion(vidhance_settings_t settings);
+</code></pre>
+
+<h4 id="parameters:fa1a9aa7bf3e774ccda21a0a7b1222dd">Parameters</h4>
+
+<p><em>settings</em> A base settings object.</p>
+
+<hr />
+
+<h3 id="vidhance-motion-sensor-settings-t:fa1a9aa7bf3e774ccda21a0a7b1222dd">vidhance_motion_sensor_settings_t</h3>
+
+<p>The settings object for external motion sensors.</p>
+
+<pre><code>typedef struct _vidhance_motion_sensor_settings_t* vidhance_motion_sensor_settings_t;
+</code></pre>
+
+<hr />
+
+<h3 id="vidhance-motion-settings-get-sensor:fa1a9aa7bf3e774ccda21a0a7b1222dd">vidhance_motion_settings_get_sensor</h3>
+
+<p>Returns the motion sensor settings object.</p>
+
+<pre><code>vidhance_motion_sensor_settings_t vidhance_motion_settings_get_sensor(vidhance_motion_settings_t settings);
+</code></pre>
+
+<h4 id="parameters-1:fa1a9aa7bf3e774ccda21a0a7b1222dd">Parameters</h4>
+
+<p><em>settings</em> A motion settings object.</p>
+
+<hr />
+
+<h3 id="vidhance-motion-sensor-settings-set-rotation:fa1a9aa7bf3e774ccda21a0a7b1222dd">vidhance_motion_sensor_settings_set_rotation</h3>
+
+<p>Registers an external rotation sensor in the motion sensor settings.</p>
+
+<pre><code>void vidhance_motion_sensor_settings_set_rotation(vidhance_motion_sensor_settings_t settings, vidhance_motion_sensor_t rotation_sensor);
+</code></pre>
+
+<h4 id="parameters-2:fa1a9aa7bf3e774ccda21a0a7b1222dd">Parameters</h4>
+
+<p><em>settings</em> A motion sensor settings object.</p>
+
+<p><em>rotation_sensor</em> A rotation sensor object.</p>
+
+<hr />
+
+<h3 id="vidhance-stabilizer-settings-t:fa1a9aa7bf3e774ccda21a0a7b1222dd">vidhance_stabilizer_settings_t</h3>
+
+<p>The stabilization settings object.</p>
+
+<pre><code>typedef struct _vidhance_stabilizer_settings_t* vidhance_stabilizer_settings_t;
+</code></pre>
+
+<hr />
+
+<h3 id="vidhance-settings-get-stabilize:fa1a9aa7bf3e774ccda21a0a7b1222dd">vidhance_settings_get_stabilize</h3>
+
+<p>Returns the stabilizer settings object.</p>
+
+<pre><code>vidhance_stabilizer_settings_t vidhance_settings_get_stabilize(const vidhance_settings_t settings);
+</code></pre>
+
+<h4 id="parameters-3:fa1a9aa7bf3e774ccda21a0a7b1222dd">Parameters</h4>
+
+<p><em>settings</em> A Vidhance settings object.</p>
+
+<hr />
+
+<h3 id="vidhance-stabilizer-mode-t:fa1a9aa7bf3e774ccda21a0a7b1222dd">vidhance_stabilizer_mode_t</h3>
+
+<p>The available modes for the stabilization module.</p>
+
+<ul>
+<li>VIDHANCE_STABILIZER_OFF - Stabilization turned off.</li>
+<li>VIDHANCE_STABILIZER_ON - Stabilization turned on.</li>
+</ul>
+
+<pre><code>typedef enum {
+	VIDHANCE_STABILIZER_OFF,
+	VIDHANCE_STABILIZER_ON
+} vidhance_stabilizer_mode_t;
+</code></pre>
+
+<hr />
+
+<h3 id="vidhance-motion-stabilize-settings-set-mode:fa1a9aa7bf3e774ccda21a0a7b1222dd">vidhance_motion_stabilize_settings_set_mode</h3>
+
+<p>Sets the stabilization mode.</p>
+
+<pre><code>void vidhance_stabilizer_settings_set_mode(vidhance_stabilizer_settings_t settings, vidhance_stabilizer_mode_t mode);
+vidhance_stabilizer_mode_t vidhance_stabilizer_settings_get_mode(const vidhance_stabilizer_settings_t settings);
+
+</code></pre>
+
+<h4 id="parameters-4:fa1a9aa7bf3e774ccda21a0a7b1222dd">Parameters</h4>
+
+<p><em>settings</em> A stabilize settings object.</p>
+
+<p><em>mode</em> One of the modes in vidhance_stabilizer_mode_t.</p>
+
+<hr />
+
+<h2 id="example:fa1a9aa7bf3e774ccda21a0a7b1222dd">Example</h2>
+
+<pre><code class="language-c">vidhance_settings_t settings = vidhance_settings_new();
+vidhance_stabilizer_settings_t stabilizeSettings = vidhance__settings_get_stabilize(settings);
+vidhance_stabilizer_settings_set_mode(stabilizeSettings, VIDHANCE_STABILIZER_ON);
+</code></pre>
+
+		
+		</main>
+	<footer></footer>
+</article>
+</section>
+	</main>
+	<footer>
+	
+	<p>copyright &copy; Imint Image Intelligence AB</p>
+</footer>
+
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/script/modernizr.js"></script>
+<script src="/script/main.js"></script>
+<script>
+	$(document).ready(function() {
+		
+
+		if($(window).width() > 831) {
+			$(window).scroll(function(e) {
+				if($(document).scrollTop() > 60) {
+					$('body > header').removeClass('no-animation');
+					$('body > nav').removeClass('no-animation');
+					$('body > header > a > img').removeClass('no-animation');
+					
+					$('body > header').addClass('scrolledDown');
+					$('body > nav').addClass('scrolledDown');
+				}
+				else {
+					$('body > header').removeClass('scrolledDown');
+					$('body > nav').removeClass('scrolledDown');
+				}
+			});
+		}
+
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+			$("video").prop("controls", true);
+		}
+	})
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+$('#downloadForm').on('submit', function(e) {
+	key = $("input:first").val();
+	url = "https://aurora.imint.se/data/"+key+"/vidhance-sdk-pc/vidhance_0.7.0_32bit.zip";
+	$('#hiddenIFrame').attr("src", url);
+	return false;
+});
+
+var $_Tawk_API={},$_Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/550802b2059b265f5423f78e/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<script>
+if (document.URL.search("localhost") == -1) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69480574-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+</html>

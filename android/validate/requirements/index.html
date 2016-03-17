@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+	
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="generator" content="Hugo 0.14" />
+<title> Requirement Specification Template &middot; Vidhance Support </title>
+<link rel="canonical" href="http://support.vidhance.com/android/validate/requirements/">
+<link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/text.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/menu.css">
+<link rel="stylesheet" href="/css/animation.css">
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/zenburn.min.css">
+<link rel="stylesheet" href="/css/local.css">
+
+</head>
+<body>
+	<header class="no-animation">
+	<a href="/"><img class="no-animation" src="/img/logotype.png"></a>
+	<a id="nav-open-btn" class="nav-btn" href="#">Navigation</a>
+</header>
+
+	<nav class="no-animation">
+	
+	<ul>
+	
+		<li >
+			<a href="/start/">start</a>
+			
+		</li>
+	
+		<li >
+			<a href="/vidview/">vidview</a>
+			
+		</li>
+	
+		<li >
+			<a href="/android/">android</a>
+			<ul>
+
+	<li>
+		<a href="/android/gettingstarted/">getting started</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/apireference/">API reference</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/faq/">FAQ</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/validate/">validate</a>
+		
+	</li>
+
+</ul>
+
+		</li>
+	
+		<li >
+			<a href="/pc/">pc</a>
+			<ul>
+
+	<li>
+		<a href="/pc/download/">download</a>
+		
+	</li>
+
+</ul>
+
+		</li>
+	
+	</ul>
+	<a id="nav-close-btn" class="close-btn" href="#">Return to Content</a>
+</nav>
+
+	<main class="no-animation">
+		<section><article
+	
+	>
+	<header><h1>Requirement Specification Template</h1></header>
+	
+	
+	<main>
+		
+			
+
+<hr />
+
+<h1 id="1-general:a05dcee144da6675ae9d2fe98e94d8dd">1 General</h1>
+
+<h2 id="1-1-identification:a05dcee144da6675ae9d2fe98e94d8dd">1.1 Identification</h2>
+
+<p>Vidhance Mobile is a unique real-time, purpose-built all-software video stabilization solution for mobile devices. The solution complements existing stabilization technologies, thereby augmenting camera capabilities and removes unwanted wobbling and swaying that occurs in most videos shot on a handheld device. Vidhance is a 3rd generation solution needed to propel widespread video clip sharing to the levels where still photo sharing is today.</p>
+
+<p>This document acts as a template for how a requirement specification can be structured for Vidhance Mobile. A complete specification is produced in collaboration with the customer.</p>
+
+<h2 id="1-2-definitions:a05dcee144da6675ae9d2fe98e94d8dd">1.2 Definitions</h2>
+
+<p><strong>frame rate</strong> The rate at which frames are recorded and/or processed. <br>
+<strong>fps</strong> Frames Per Second - The number of frames for each second of video. <br>
+<strong>real-time</strong> The ability of a system to process data in the same rate as it is gathered. <br>
+<strong>720p</strong> A resolution of 1280 x 720 pixels. <br>
+<strong>1080p</strong> A resolution of 1920 x 1080 pixels. <br>
+<strong>2160p</strong> A resolution of 4096 x 2160 pixels. <br></p>
+
+<h2 id="1-3-revision-history:a05dcee144da6675ae9d2fe98e94d8dd">1.3 Revision History</h2>
+
+<p><em>revision 1</em> Emil Westergren 2015-05-26</p>
+
+<p><br></p>
+
+<hr />
+
+<h1 id="2-system-overview:a05dcee144da6675ae9d2fe98e94d8dd">2 System Overview</h1>
+
+<h2 id="2-1-problem-description:a05dcee144da6675ae9d2fe98e94d8dd">2.1 Problem Description</h2>
+
+<p>Recording video with smartphone devices is becoming increasingly more popular in today&rsquo;s market. Practically all smartphones on the market have at least one camera sensor and the ability to capture video. A major problem with capturing quality video on a smartphone is the difficulty of keeping the device steady enough for the video to be stable and free from unintended motion from the photographer. This results in video with poor quality which makes it unpleasant to the eye.</p>
+
+<h2 id="2-2-system-context:a05dcee144da6675ae9d2fe98e94d8dd">2.2 System Context</h2>
+
+<p>Video recording with a smartphone is usually spontaneously captured, with the photographer controlling the camera by hand and perhaps also moving around while recording.</p>
+
+<h2 id="2-3-system-usage:a05dcee144da6675ae9d2fe98e94d8dd">2.3 System Usage</h2>
+
+<p>Vidhance is used to stabilize the video in real-time during the recording, resulting in a stabilized, high quality video without the need of post-processing.</p>
+
+<h2 id="2-4-platform-prerequisites:a05dcee144da6675ae9d2fe98e94d8dd">2.4 Platform Prerequisites</h2>
+
+<h3 id="2-4-1-hardware:a05dcee144da6675ae9d2fe98e94d8dd">2.4.1 Hardware</h3>
+
+<p>&mdash;Insert hardware specifications for target device&mdash;</p>
+
+<h3 id="2-4-2-operating-system-and-library-dependencies:a05dcee144da6675ae9d2fe98e94d8dd">2.4.2 Operating System and Library Dependencies</h3>
+
+<ul>
+<li>Android 5.0</li>
+<li>OpenGL ES 3</li>
+<li>EGLImage extension</li>
+</ul>
+
+<h2 id="2-5-recording-prerequisites:a05dcee144da6675ae9d2fe98e94d8dd">2.5 Recording Prerequisites</h2>
+
+<ul>
+<li>The user moves with a maximum speed of 1 m/s</li>
+<li>The camera is held as steady as possible, using both hands with a firm grip on each side of the camera. The elbows should stay close to the body. Movements when holding the camera should be as slow and gentle as possible.</li>
+<li>The scene has sufficient light from the sun or other light sources</li>
+</ul>
+
+<p><br></p>
+
+<hr />
+
+<h1 id="3-technical-requirements:a05dcee144da6675ae9d2fe98e94d8dd">3 Technical requirements</h1>
+
+<h2 id="3-1-general-requirements:a05dcee144da6675ae9d2fe98e94d8dd">3.1 General Requirements</h2>
+
+<h3 id="3-1-1-performance:a05dcee144da6675ae9d2fe98e94d8dd">3.1.1 Performance</h3>
+
+<p><strong>prf01</strong> The recording runs continuously for 30 minutes or until the maximum file size is reached. <br>
+<strong>prf02</strong> Less than 3% frames dropped when recording 2160p video with a frame rate of 30 fps. <br>
+<strong>prf03</strong> Less than 2% frames dropped when recording 1080p video with a frame rate of 30 fps. <br>
+<strong>prf04</strong> Less than 1% frames dropped when recording 720p video with a frame rate of 30 fps. <br></p>
+
+<h3 id="3-1-2-power-usage:a05dcee144da6675ae9d2fe98e94d8dd">3.1.2 Power usage</h3>
+
+<p><strong>pwu01</strong> Having the stabilization enabled increases the power usage with a maximum of 30% during recording.</p>
+
+<h2 id="3-2-scenario-requirements:a05dcee144da6675ae9d2fe98e94d8dd">3.2 Scenario Requirements</h2>
+
+<p><strong>sce01</strong> The product shall perform better for at least 4 out of 5 of the following scenarios compared to with the product disabled. <br>
+<strong>sce02</strong> Walking forward in lit indoor scene. <br>
+<strong>sce03</strong> Sideways recording of moving person in sunlight. <br>
+<strong>sce04</strong> Rotation around moving object in cloudy outdoor scene. <br>
+<strong>sce05</strong> Rotation around user in lit indoor scene. <br>
+<strong>sce06</strong> Transition to/from shade in sunny outdoor scene. <br>
+<strong>sce07</strong> Zoomed capture of distant target in sunny outdoor scene. <br></p>
+
+<!-- **sce02** The product shall perform equal or better for at least 80% of the following scenarios compared to the solutions on Apple iPhone 6 and Sony Xperia Z3.
+### 3.2.1 Light Conditions
+**lit01** A lit indoor scene. <br>
+**lit02** A sunny outdoor scene. <br>
+**lit03** A cloudy outdoor scene. <br>
+**lit04** Transitions between shade and sunlight. <br>
+
+### 3.2.2 User Movement
+**umv01** *Stationary* - The user remains stationary during the recording. <br>
+**umv02** *Moving forward/backward* - The user walks forward/backward at a maximum speed of 1 m/s. <br>
+**umv03** *Moving sideways* - As in **umv02** but instead recording to the right or left side. <br>
+**umv04** *Rotation around object* - The user rotates around the object in focus. <br>
+**umv05** *Rotation around user* - The user rotates around himself/herself. <br>
+
+### 3.2.3 Scene Movement
+**omv01** *Static* - No moving objects in the scene. <br>
+**omv02** *Dynamic* - A maximum of five moving objects in the scene. <br> -->
+
+<p><br></p>
+
+<hr />
+
+		
+		</main>
+	<footer></footer>
+</article>
+</section>
+	</main>
+	<footer>
+	
+	<p>copyright &copy; Imint Image Intelligence AB</p>
+</footer>
+
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/script/modernizr.js"></script>
+<script src="/script/main.js"></script>
+<script>
+	$(document).ready(function() {
+		
+
+		if($(window).width() > 831) {
+			$(window).scroll(function(e) {
+				if($(document).scrollTop() > 60) {
+					$('body > header').removeClass('no-animation');
+					$('body > nav').removeClass('no-animation');
+					$('body > header > a > img').removeClass('no-animation');
+					
+					$('body > header').addClass('scrolledDown');
+					$('body > nav').addClass('scrolledDown');
+				}
+				else {
+					$('body > header').removeClass('scrolledDown');
+					$('body > nav').removeClass('scrolledDown');
+				}
+			});
+		}
+
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+			$("video").prop("controls", true);
+		}
+	})
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+$('#downloadForm').on('submit', function(e) {
+	key = $("input:first").val();
+	url = "https://aurora.imint.se/data/"+key+"/vidhance-sdk-pc/vidhance_0.7.0_32bit.zip";
+	$('#hiddenIFrame').attr("src", url);
+	return false;
+});
+
+var $_Tawk_API={},$_Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/550802b2059b265f5423f78e/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<script>
+if (document.URL.search("localhost") == -1) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69480574-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+</html>

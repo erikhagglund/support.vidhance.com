@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Starts on Vidhance Support</title>
+    <link>http://support.vidhance.com/start/</link>
+    <description>Recent content in Starts on Vidhance Support</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Mar 2015 14:32:03 +0100</lastBuildDate>
+    <atom:link href="http://support.vidhance.com/start/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Vidhance Support</title>
+      <link>http://support.vidhance.com/start/</link>
+      <pubDate>Wed, 11 Mar 2015 14:32:03 +0100</pubDate>
+      
+      <guid>http://support.vidhance.com/start/</guid>
+      <description>
+
+&lt;p&gt;This is the unified support portal for all of &lt;a href=&#34;http://imint.se&#34;&gt;Imint&lt;/a&gt;s &lt;a href=&#34;http://vidhance.com&#34;&gt;Vidhance&lt;/a&gt; products.&lt;/p&gt;
+
+&lt;h1 id=&#34;vidhance:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Vidhance&lt;/h1&gt;
+
+&lt;p&gt;Vidhance is the trademark used for all Imints video enhancement features. Typically customers decide only to use a subset of the functionality. The features available depend on the method of integration and the runtime platform used.&lt;/p&gt;
+
+&lt;h2 id=&#34;ways-to-integrate-vidhance-in-your-product:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Ways to integrate Vidhance in your product&lt;/h2&gt;
+
+&lt;h3 id=&#34;vidview:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Vidview&lt;/h3&gt;
+
+&lt;p&gt;Vidview is a video viewer. It can be integrated into your product using the Vidview SDK. The SDK is available in several versions. You typically want to use Vidview if you want to enhance the video at the moment when they are viewed.&lt;/p&gt;
+
+&lt;p&gt;You can read more about integrating Vidview &lt;a href=&#34;../vidview&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;vidhance-mobile:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Vidhance Mobile&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://vidhancemobile.com&#34;&gt;Vidhance Mobile&lt;/a&gt; is a product for using Vidhance on a mobile device. More information on how to start integrating Vidhance Mobile into Android can be found &lt;a href=&#34;../android&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;support:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Support&lt;/h1&gt;
+
+&lt;h2 id=&#34;chat:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Chat&lt;/h2&gt;
+
+&lt;p&gt;In our experience, the best way to get technical support for using and integrating Vidhance is to chat directly with one of our engineers. In order to schedule a chat session please contact us using the chat widget below. We prefer to do support weekdays between 09:00 and 18:00 CET. Free chat support is available upon booking on Thursdays between 13:00 and 18:00 CET.&lt;/p&gt;
+
+&lt;h2 id=&#34;email:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Email&lt;/h2&gt;
+
+&lt;p&gt;When email is the preferred method of getting support you may contact us at support@imint.se.&lt;/p&gt;
+
+&lt;h2 id=&#34;phone:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Phone&lt;/h2&gt;
+
+&lt;p&gt;Support over telephone is also available to paying customers.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

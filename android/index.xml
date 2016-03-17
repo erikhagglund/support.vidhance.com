@@ -1,0 +1,1533 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Androids on Vidhance Support</title>
+    <link>http://support.vidhance.com/android/</link>
+    <description>Recent content in Androids on Vidhance Support</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Mar 2015 14:32:03 +0100</lastBuildDate>
+    <atom:link href="http://support.vidhance.com/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Evaluate Vidhance Mobile</title>
+      <link>http://support.vidhance.com/android/evaluate/</link>
+      <pubDate>Wed, 11 Mar 2015 14:32:03 +0100</pubDate>
+      
+      <guid>http://support.vidhance.com/android/evaluate/</guid>
+      <description>&lt;!-- # Introduction
+This section describes how to download and flash the files necessary to evaluate Vidhance Mobile on a Nexus 6 device with Android 5.1.
+
+# Prerequisites
+## PC
+We recommend using a Ubuntu 14.04 LTS. You will need to install ADB and fastboot:
+
+```sh
+sudo apt-get install phablet-tools
+```
+
+### Downloading files
+1. Create a folder
+2. Download the [download script](download.sh) and run it inside the folder
+3. Enter your key to start downloading the necessary files
+
+## Phone
+
+### Enabling USB debugging
+1. Go to the *Settings* app on your device.
+2. Select *About phone*
+3. Tap *Build number* seven times to unlock developer options
+4. You should see a message that confirms you have enabled the developer options
+5. Go back to the Settings menu
+6. Select *Developer options*
+7. Check the *USB debugging* box
+8. Press OK when asked: *Allow USB debugging?*
+9. Connect the device to a USB port on your computer
+10. Press OK when asked: *Allow USB debugging?* with the computer&#39;s RSA key fingerprint displayed.
+11. To verify, run the command:
+
+    ```sh
+    adb devices
+    ```
+12. If the device is listed as *device* you are all set. If it is listed as *unauthorized*, restart the ADB server:
+
+    ```sh
+    adb kill-server
+    ```
+
+    ```sh
+    adb start-server
+    ```
+and you should be asked to allow USB debugging (see step 6).
+
+# Rooting
+Skip this step if you already have a rooted version of Android 5.1 on the device and continue to **Installing Vidhance**.
+## Booting device into bootloader
+1. Use ADB to reboot the device into the bootloader:
+
+    ```sh
+    adb reboot-bootloader
+    ```
+2. Make sure the device is unlocked by using the fastboot command and follow the instructions on the screen of the device:
+
+    ```sh
+    fastboot oem unlock
+    ```
+
+## Flash rooted boot image
+1. Run the script for flashing Android:
+
+    ```sh
+    . flash_android.sh
+    ```
+2. Wait for the phone to reboot.
+
+# Installing Vidhance
+1. Run the script for flashing Vidhance:
+
+    ```sh
+    . flash_vidhance.sh
+    ```
+2. Wait for the phone to reboot.
+
+# Running
+1. Start the default camera application.
+2. Switch to video capture.
+3. You should see a viewfinder in the preview representing the area that will be captured in the video.
+4. Start recording.
+5. The resulting video should be stabilized and contain an Imint logotype and a trace showing the stabilization for the x and y axes. --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>FAQ</title>
+      <link>http://support.vidhance.com/android/faq/</link>
+      <pubDate>Wed, 11 Mar 2015 14:32:03 +0100</pubDate>
+      
+      <guid>http://support.vidhance.com/android/faq/</guid>
+      <description>
+
+&lt;h2 id=&#34;does-vidhance-crop-the-captured-video:4a1318da06786ac52626178ca960109e&#34;&gt;Does Vidhance crop the captured video?&lt;/h2&gt;
+
+&lt;p&gt;Yes, any video stabilization solution requires a smaller field of view in the resulting video compared to the original. In Vidhance however, the level of trimming can be dynamically set through the API. This enables functions like “Adaptive Zoom”, where the crop can be smoothly adjusted to fit the amplitude of unwanted motion. It also allows to create different video capture modes, such as “normal” and “sports mode”, where the latter will need a smaller field of view as the amplitude of shakes is expected to be higher.&lt;/p&gt;
+
+&lt;h2 id=&#34;which-socs-are-supported:4a1318da06786ac52626178ca960109e&#34;&gt;Which SoCs are supported?&lt;/h2&gt;
+
+&lt;p&gt;The quick integration method applied means that the software to a large extent is hardware agnostic. The first successful integrations have been done on various Qualcomm and Nvidia chipsets. After a first successful integration, further hardware specific optimizations and adjustments can be made to further improve performance and quality.&lt;/p&gt;
+
+&lt;p&gt;Vidhance should work on most high-end SoCs such as the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Qualcomm Snapdragon 800 (Quad-core 2.3 GHz Krait 400, Adreno 330)&lt;/li&gt;
+&lt;li&gt;Qualcomm Snapdragon 805 (Quad-core 2.7 GHz Krait 450, Adreno 420)&lt;/li&gt;
+&lt;li&gt;Nvidia Tegra 3 (Quad-core 1.2 GHz Cortex-A9)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;what-video-resolutions-and-frame-rates-are-supported:4a1318da06786ac52626178ca960109e&#34;&gt;What video resolutions and frame rates are supported?&lt;/h2&gt;
+
+&lt;p&gt;Vidhance is adjustable to any video resolution. Obviously, the larger the resolution, the better the image computational capacity of the hardware needs to be dimensioned. However, the processor load for the core motion analysis algorithms does not scale proportional to increased video resolution, so it is more a question on efficient image data transfers.&lt;/p&gt;
+
+&lt;p&gt;Vidhance is also adjustable to any frame rate, but the higher the frame rate, the better hardware performance is needed. For framerates 120 fps and above, which is intended to be played back at standard frame rates (slow motion replay), the need for video stabilization is reduced, as the slowdown in itself mitigate the instability issues.&lt;/p&gt;
+
+&lt;h2 id=&#34;latency:4a1318da06786ac52626178ca960109e&#34;&gt;Latency?&lt;/h2&gt;
+
+&lt;p&gt;Vidhance is uniquely quick, and can perform with less than one frame delay (meaning no look-ahead buffer at all). For consumer devices however, a latency of 2-4 frames is typically used, as this enables better processor load balancing, and thus saves battery time. It is still fast enough to be viable to use the enhanced video in screen preview, or for live streaming purposes.&lt;/p&gt;
+
+&lt;p&gt;Vidhance is also being extended with a mode using a lookahead buffer. This will enable further improvements in video stabilization quality, and supports features such as “preemptive stabilization”, where a future known motion can be compensated by letting a smooth motion through earlier.&lt;/p&gt;
+
+&lt;h2 id=&#34;performance-battery:4a1318da06786ac52626178ca960109e&#34;&gt;Performance/Battery?&lt;/h2&gt;
+
+&lt;p&gt;The quick integration method typically gives a penalty of around 30% added power consumption during recording. The majority of processor time is however spent copying and moving image data, and the core algorithms build up only a fraction of the processing cycle. In a deeper integration, where hardware specific tuning can be done (e.g. specific memory access primitives), the design target is to reach 10% or below.&lt;/p&gt;
+
+&lt;h2 id=&#34;sensors-needed:4a1318da06786ac52626178ca960109e&#34;&gt;Sensors needed?&lt;/h2&gt;
+
+&lt;p&gt;Vidhance does not need any hardware sensors, and can perform stabilization with great results using only video data (e.g. using the camera as the only sensor), using an in-house algorithm based on optical flow analysis. However, if rotation sensor data is available, this can easily be enabled as well to increase both performance and quality.&lt;/p&gt;
+
+&lt;h2 id=&#34;patents:4a1318da06786ac52626178ca960109e&#34;&gt;Patents?&lt;/h2&gt;
+
+&lt;p&gt;Vidhance core algorithms in motion estimation and stabilization are protected under US Patents. This can be valuable to mitigate risk of infringement claims from competitors, aiming to block or delay entrance into other markets.&lt;/p&gt;
+
+&lt;h2 id=&#34;competition:4a1318da06786ac52626178ca960109e&#34;&gt;Competition?&lt;/h2&gt;
+
+&lt;p&gt;Imint cannot get access to competitor’s solutions to perform own, detailed tests. Comparing results with leading phones for photo and video, such as the Apple iPhone6 and Sony Xperia Z3, Imint can demonstrate that Vidhance adds substantial quality gains in video stabilization. As for independent companies providing similar solutions, in Imint’s view, these are they key differentiators for Imint’s solution:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Able to execute with minimal latency (no look-ahead buffer needed)&lt;/li&gt;
+&lt;li&gt;Does not depend on (but can benefit from) additional sensor data&lt;/li&gt;
+&lt;li&gt;Does not only dampen motion, but separates intentional from unintentional motions, and cancelling out the latter&lt;/li&gt;
+&lt;li&gt;Smooth pass-through of motions to emulate rigs and tripods&lt;/li&gt;
+&lt;li&gt;Open API with a rich level of configuration available for the integrator.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Vidhance SDK for Android</title>
+      <link>http://support.vidhance.com/android/gettingstarted/</link>
+      <pubDate>Wed, 11 Mar 2015 14:32:03 +0100</pubDate>
+      
+      <guid>http://support.vidhance.com/android/gettingstarted/</guid>
+      <description>
+
+&lt;h1 id=&#34;introduction:4d8715ce994286818a53a9e77d960afc&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;This section will describe how to integrate Vidhance by wrapping the camera driver on Android devices. This can be achieved by replacing the camera HAL implementation with a wrapper which internally will link to the original implementation. This enables the wrapper to monitor the requests sent to the camera and modify the input and output data.&lt;/p&gt;
+
+&lt;h1 id=&#34;prerequisites:4d8715ce994286818a53a9e77d960afc&#34;&gt;Prerequisites&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;We recommend using a computer with Ubuntu 14.04&lt;/li&gt;
+&lt;li&gt;Android device with root access&lt;/li&gt;
+&lt;li&gt;Camera HAL version 1.0, 3.0 or 3.2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;setting-up-device:4d8715ce994286818a53a9e77d960afc&#34;&gt;Setting up device&lt;/h1&gt;
+
+&lt;h2 id=&#34;enabling-usb-debugging:4d8715ce994286818a53a9e77d960afc&#34;&gt;Enabling USB debugging&lt;/h2&gt;
+
+&lt;p&gt;You need to have USB debugging enabled on your device.&lt;/p&gt;
+
+&lt;p&gt;Note: The following steps are correct for Nexus 5, 6 and 6P. Other devices may look somewhat different:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Make sure you have &lt;code&gt;adb&lt;/code&gt; and &lt;code&gt;fastboot&lt;/code&gt; installed (&lt;code&gt;sudo apt-get install phablet-tools&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Connect the device to a USB port on your computer&lt;/li&gt;
+&lt;li&gt;Go to the &lt;em&gt;Settings&lt;/em&gt; app on your device.&lt;/li&gt;
+&lt;li&gt;Select &lt;em&gt;About phone&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;If you have not yet unlocked developer options, tap &lt;em&gt;Build number&lt;/em&gt; seven times to unlock developer options&lt;/li&gt;
+&lt;li&gt;You should see a message that confirms you have enabled the developer options&lt;/li&gt;
+&lt;li&gt;Go back to the main Settings menu and select &lt;em&gt;Developer options&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Check the &lt;em&gt;USB debugging&lt;/em&gt; box&lt;/li&gt;
+&lt;li&gt;Press OK when asked: &lt;em&gt;Allow USB debugging?&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Press OK if asked: &lt;em&gt;Allow USB debugging?&lt;/em&gt; with the computer&amp;rsquo;s RSA key fingerprint displayed.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;To verify, run the command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;adb devices
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If the device is listed as &lt;em&gt;device&lt;/em&gt; you are ready. If it is listed as &lt;em&gt;unauthorized&lt;/em&gt;, restart the ADB server:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;adb kill-server &amp;amp;&amp;amp; adb start-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You may then be asked to allow USB debugging (see step 9), then try step 10 again.&lt;/p&gt;
+
+&lt;h1 id=&#34;setting-up-environment:4d8715ce994286818a53a9e77d960afc&#34;&gt;Setting up environment&lt;/h1&gt;
+
+&lt;h2 id=&#34;installing-adb:4d8715ce994286818a53a9e77d960afc&#34;&gt;Installing ADB&lt;/h2&gt;
+
+&lt;p&gt;You will need ADB (Android Debug Bridge) to write files to the device:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;sudo apt-get install phablet-tools
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;installing-android-ndk:4d8715ce994286818a53a9e77d960afc&#34;&gt;Installing Android-NDK&lt;/h2&gt;
+
+&lt;p&gt;You will need &lt;code&gt;ndk-build&lt;/code&gt;, located in the Android NDK, to build the sources for your device.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download the installer &lt;a href=&#34;https://developer.android.com/ndk/downloads/index.html&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Unpack the files into a path of your choice.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;downloading-wrapper-sources:4d8715ce994286818a53a9e77d960afc&#34;&gt;Downloading wrapper sources&lt;/h2&gt;
+
+&lt;p&gt;To quickly get started with Vidhance SDK we provide a public repository containing code to wrap the camera HAL and examples of how to integrate Vidhance SDK for Nexus devices. This code can easily be modified to run on your device.&lt;/p&gt;
+
+&lt;p&gt;If you do not already have &lt;code&gt;git&lt;/code&gt; installed, install it using:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;sudo apt-get install git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The repository can then be cloned from github:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;git clone https://github.com/vidhance/android-camera-wrapper
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;setting-up-help-functions:4d8715ce994286818a53a9e77d960afc&#34;&gt;Setting up help functions&lt;/h2&gt;
+
+&lt;p&gt;In the &lt;code&gt;android-camera-wrapper/nexus6p&lt;/code&gt; folder, you will find the script &lt;em&gt;setup.sh&lt;/em&gt;. You need to set the correct paths and names in this file in order for the script to work. The following information is needed:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The name of the camera HAL library on your device (camera.msm8994.so on Nexus 6P)&lt;/li&gt;
+&lt;li&gt;The path to where your wrapper library will be located once you build it (leave it as it is if you are unsure)&lt;/li&gt;
+&lt;li&gt;The path to where the Android NDK is located&lt;/li&gt;
+&lt;li&gt;The path to where the Vidhance binary is located (leave it as it is if you are unsure)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When the valid paths are set, run the script:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;. setup.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You now have access to a number of help functions listed in the terminal.&lt;/p&gt;
+
+&lt;h2 id=&#34;downloading-vidhance-library-and-android-dependencies:4d8715ce994286818a53a9e77d960afc&#34;&gt;Downloading Vidhance library and Android dependencies&lt;/h2&gt;
+
+&lt;p&gt;Run the function &lt;code&gt;download_vidhance&lt;/code&gt; in the terminal. Follow the instructions to start downloading. You will need a key to authorize the download. This will supply you with a Vidhance binary and the needed headers and libraries to build the wrapper for your version of Android.&lt;/p&gt;
+
+&lt;h1 id=&#34;configuring-for-your-device:4d8715ce994286818a53a9e77d960afc&#34;&gt;Configuring for your device&lt;/h1&gt;
+
+&lt;p&gt;We recommend that you modify the example implementation for Nexus 6P to create a compatible version for your device.&lt;/p&gt;
+
+&lt;h2 id=&#34;android-dependencies:4d8715ce994286818a53a9e77d960afc&#34;&gt;Android dependencies&lt;/h2&gt;
+
+&lt;p&gt;The camera wrapper depends on libraries found in the Android source tree. We have provided the needed headers and libraries for Nexus 6P which should be compatible with any 32-bit ARM-based device running Android 6.0. The headers can be found in the &lt;em&gt;include&lt;/em&gt; folder and the libraries in the &lt;em&gt;libs&lt;/em&gt; folder. The files are downloaded when running the &lt;em&gt;download_vidhance&lt;/em&gt; function. If your device uses a different architecture or Android version, you may need to replace these libraries with ones compatible with your device. Contact us if you need help with this matter.&lt;/p&gt;
+
+&lt;h2 id=&#34;determining-camera-hal-and-module-version:4d8715ce994286818a53a9e77d960afc&#34;&gt;Determining camera HAL and module version&lt;/h2&gt;
+
+&lt;p&gt;In order to choose the correct wrapper, you need to know which HAL and module version your original library has implemented. Query the device with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;adb shell dumpsys | grep &amp;quot;Camera module&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The result should be something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Camera module HAL API version: 0x303
+Camera module API version: 0x204
+Camera module name: Vidhance Module
+Camera module author: Imint AB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The most significant digit is the major version number and the two least significant digits are the minor version number. In the above example the original HAL API is therefore of version 3.2 and the module API of version 2.4.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuring-android-makefiles:4d8715ce994286818a53a9e77d960afc&#34;&gt;Configuring Android makefiles&lt;/h2&gt;
+
+&lt;h3 id=&#34;android-mk:4d8715ce994286818a53a9e77d960afc&#34;&gt;Android.mk&lt;/h3&gt;
+
+&lt;p&gt;Inside the Nexus 6P folder you can find &lt;code&gt;Android.mk&lt;/code&gt; which is used as a makefile when building with &lt;code&gt;ndk-build&lt;/code&gt;. We provide wrapper implementations for a number of camera HAL versions. You need to edit the makefile to use the sources for the HAL version you intend to use with your device. In the example &lt;code&gt;Android.mk&lt;/code&gt; you will see the following configuration:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#Android version
+ANDROID_VERSION_MAJOR=6
+ANDROID_VERSION_MINOR=0
+#Module API version
+MODULE_VERSION_MAJOR=2
+MODULE_VERSION_MINOR=4
+#Device API version
+DEVICE_VERSION_MAJOR=3
+DEVICE_VERSION_MINOR=3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This means the library is compiled for Android 6.0, using Camera module API version 2.4 and Camera device API version 3.3 (also called Camera HAL version).&lt;/p&gt;
+
+&lt;h3 id=&#34;application-mk:4d8715ce994286818a53a9e77d960afc&#34;&gt;Application.mk&lt;/h3&gt;
+
+&lt;p&gt;In this file you can specify which Android API level you are building for. A complete list can be found &lt;a href=&#34;https://source.android.com/source/build-numbers.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;changes-in-source-code:4d8715ce994286818a53a9e77d960afc&#34;&gt;Changes in source code&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code&gt;VidhanceProcessor&lt;/code&gt; implementation in the Nexus 6P folder is an example of how to use the camera wrapper implementation in combination with the Vidhance library. You probably need some minor modifications before you start building.&lt;/p&gt;
+
+&lt;h3 id=&#34;include-correct-videoprocessor-header:4d8715ce994286818a53a9e77d960afc&#34;&gt;Include correct VideoProcessor header&lt;/h3&gt;
+
+&lt;p&gt;Make sure the correct VideoProcessor header for your HAL version is included in VidhanceProcessor.h.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/* VidhanceProcessor.h */
+#include &amp;quot;../HAL/HAL3/VideoProcessor.h&amp;quot;
+#include &amp;quot;../HAL/HAL3/DoubleBufferVideoProcessor.h&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;implement-getstride:4d8715ce994286818a53a9e77d960afc&#34;&gt;Implement getStride&lt;/h3&gt;
+
+&lt;p&gt;The stride factor for GraphicBuffer depends on the platform you are using. You therefore need to define a function where this information can be accessed. Take a look at the implementation for Nexus 6P:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;stride_t VidhanceProcessor::getStride(const sp&amp;lt;GraphicBuffer&amp;gt;&amp;amp; buffer) {
+	return stride_t(ALIGN(buffer-&amp;gt;width, buffer-&amp;gt;usage &amp;amp; GraphicBuffer::USAGE_HW_VIDEO_ENCODER ? 64 : 32), ALIGN(buffer-&amp;gt;height, 32));
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a name=&#34;Building&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;building:4d8715ce994286818a53a9e77d960afc&#34;&gt;Building&lt;/h1&gt;
+
+&lt;p&gt;The &lt;code&gt;build&lt;/code&gt; function is an example of how to use &lt;code&gt;ndk-build&lt;/code&gt; to build the sources. You are of course free to use your toolchain of choice. The build should generate &lt;em&gt;libcamera_wrapper.so&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;PreparingPhoneForWrapper&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;preparing-phone-for-wrapper:4d8715ce994286818a53a9e77d960afc&#34;&gt;Preparing phone for wrapper&lt;/h1&gt;
+
+&lt;p&gt;Before we can push the wrapper to the device we need to know the filename Android expects when loading the camera HAL. For example, for Nexus 5 it is &lt;em&gt;camera.hammerhead.so&lt;/em&gt; and for Nexus 6P
+&lt;em&gt;camera.msm8994.so&lt;/em&gt;. What we want to do is to rename the wrapper library to the expected filename and rename the actual HAL implementation to &lt;em&gt;camera_backend.so&lt;/em&gt; so it can be loaded by the wrapper.&lt;/p&gt;
+
+&lt;p&gt;It is recommended to create a backup of the original HAL implementation if you somehow manage to delete it by mistake. You can pull the library from the device with &lt;code&gt;adb&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;adb pull /system/lib/hw/camera.msm8994.so camera_backup.msm8994.so
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The function &lt;code&gt;setup_device&lt;/code&gt; will create a copy of your camera HAL library on your device and rename it to &lt;em&gt;camera_backend.so&lt;/em&gt;. It will also push the Vidhance library to the phone - so make sure you have downloaded it and specified the correct path to it in the setup.sh script. Once the function has completed you don&amp;rsquo;t have to run it unless you reinstall Android on your phone or simply want to push a newer version of the Vidhance library.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;PushingToPhone&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;pushing-to-phone:4d8715ce994286818a53a9e77d960afc&#34;&gt;Pushing to phone&lt;/h1&gt;
+
+&lt;p&gt;Every time you have rebuilt the wrapper library with &lt;code&gt;build&lt;/code&gt; you can use the &lt;code&gt;push&lt;/code&gt; function to overwrite it on the device. Make sure you set the &lt;em&gt;CAMERA_HAL&lt;/em&gt; variable to the name of your original library and the correct path to your wrapper library in the &lt;em&gt;setup.sh&lt;/em&gt; script.&lt;/p&gt;
+
+&lt;h1 id=&#34;restoring-phone:4d8715ce994286818a53a9e77d960afc&#34;&gt;Restoring phone&lt;/h1&gt;
+
+&lt;p&gt;If you want to reset the device to its original state you can use the &lt;code&gt;restore&lt;/code&gt; function. This will set the camera library on the device to the original.&lt;/p&gt;
+
+&lt;h1 id=&#34;using-the-vidhance-api:4d8715ce994286818a53a9e77d960afc&#34;&gt;Using the Vidhance API&lt;/h1&gt;
+
+&lt;p&gt;Examine the &lt;em&gt;CameraWrapper&lt;/em&gt; implementation in the HAL folder and use it as an example for how to interact with the Vidhance API for Android. Here is a more detailed description of the code using the Vidhance API:&lt;/p&gt;
+
+&lt;h2 id=&#34;initializing:4d8715ce994286818a53a9e77d960afc&#34;&gt;Initializing&lt;/h2&gt;
+
+&lt;p&gt;Start with including the header containing the Vidhance API:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;quot;../vidhance/vidhance.h&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Before you can use the Vidhance API you need to initialize it by calling the global load function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vidhance_load();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;register-callbacks:4d8715ce994286818a53a9e77d960afc&#34;&gt;Register callbacks&lt;/h2&gt;
+
+&lt;h3 id=&#34;graphicbuffer:4d8715ce994286818a53a9e77d960afc&#34;&gt;GraphicBuffer&lt;/h3&gt;
+
+&lt;p&gt;Vidhance depends on a number of callbacks to interact with Android&amp;rsquo;s GraphicBuffer. These callbacks are located in the vidhance folder and should &lt;strong&gt;NOT&lt;/strong&gt; be modified. Simply include the header and supply Vidhance with the function pointers.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;quot;../vidhance/graphicbuffer/GraphicBufferWrapper.h&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;vidhance_graphic_buffer_register_callbacks(
+  allocateGraphicBuffer,
+  createGraphicBuffer,
+  freeGraphicBuffer,
+  lockGraphicBuffer,
+  unlockGraphicBuffer);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a name=&#34;DebugPrint&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;debug-print:4d8715ce994286818a53a9e77d960afc&#34;&gt;Debug print&lt;/h3&gt;
+
+&lt;p&gt;If you want debug output from Vidhance you can register a print callback. A default function that prints to logcat is located in the vidhance folder but you are free to use your own.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;quot;../vidhance/debug/Debug.h&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;vidhance_debug_register_callback(debugPrint);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;creating-vidhance-context:4d8715ce994286818a53a9e77d960afc&#34;&gt;Creating Vidhance context&lt;/h2&gt;
+
+&lt;p&gt;To create a context we first need to create settings for the context. It is recommended to use the default settings until you have successfully built and pushed to the device.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vidhance_settings_t settings = vidhance_settings_new();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If your device can provide gyro sensor data you should register a RotationSensor in the settings. You can include the GyroReader header in the vidhance folder and use a predefined function &lt;code&gt;GyroReader::getAngularVelocity&lt;/code&gt; which uses the Android SensorManager API. Of course you are free to supply a custom function pointer for the sensor sampling, as long as it will correctly return the requested samples between two camera timestamps. For this to be possible you need to be able to synchronize the camera timestamps and gyro timestamps.&lt;/p&gt;
+
+&lt;p&gt;Example implementation of sampling function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;vidhance_angular_velocity_measurements_t GyroReader::_getAngularVelocity(vidhance_date_time_t timestamp, vidhance_time_span_t length) {
+	int64_t suspendedTimeNs = systemTime(SYSTEM_TIME_BOOTTIME) - systemTime(SYSTEM_TIME_MONOTONIC);
+	vidhance_angular_velocity_measurements_t result = vidhance_angular_velocity_measurements_new(this-&amp;gt;getSamplePeriod());
+	std::vector&amp;lt;ASensorEvent&amp;gt; events = this-&amp;gt;getEvents(timestamp, length);
+	std::vector&amp;lt;ASensorEvent&amp;gt;::const_iterator iter;
+	for(iter = events.begin(); iter != events.end(); ++iter) {
+		ASensorEvent event = *iter;
+		int64_t eventTimestampTicks = (event.timestamp - suspendedTimeNs) / 100;
+		vidhance_float_vector_3d_t velocity = vidhance_float_vector_3d_new(-event.data[1], -event.data[0], -event.data[2]);
+		vidhance_date_time_t eventTime = vidhance_date_time_new(eventTimestampTicks);
+		vidhance_angular_velocity_measurement_t measurement = vidhance_angular_velocity_measurement_new(velocity, eventTime);
+		vidhance_angular_velocity_measurements_add(result, measurement);
+	}
+	events.clear();
+	return result;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;quot;../vidhance/sensors/GyroReader.h&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;vidhance_settings_t settings = vidhance_settings_new();
+vidhance_motion_settings_t motion_settings = vidhance_settings_get_motion(settings);
+vidhance_motion_sensor_settings_t sensor_settings = vidhance_motion_settings_get_sensor(motion_settings);
+vidhance_motion_sensor_t gyro_sensor = vidhance_gyro_sensor_new(GyroReader::getAngularVelocity, GyroReader::getInstance()-&amp;gt;getSamplePeriod());
+vidhance_motion_sensor_t rotation_sensor = vidhance_rotation_sensor_new(gyro_sensor);
+vidhance_motion_sensor_settings_set_rotation(sensor_settings, rotation_sensor);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can now create a vidhance context using the settings.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vidhance_context_t context = vidhance_context_new(settings);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;configuring-settings:4d8715ce994286818a53a9e77d960afc&#34;&gt;Configuring settings&lt;/h2&gt;
+
+&lt;p&gt;The Vidhance API enables you to configure the settings of the different modules to optimize quality and performance for your device. Take a look in &lt;em&gt;vidhance.h&lt;/em&gt; to see the available settings. As an example we will look at the stabilization settings:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/* Motion stabilize settings */
+extern vidhance_stabilizer_settings_t vidhance_settings_get_stabilize(const vidhance_settings_t settings);
+extern void vidhance_stabilizer_settings_set_mode(vidhance_stabilizer_settings_t settings, vidhance_stabilizer_mode_t mode);
+extern vidhance_stabilizer_mode_t vidhance_stabilizer_settings_get_mode(const vidhance_stabilizer_settings_t settings);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;First we need a reference to the motion settings from our base settings:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vidhance_settings_t settings = vidhance_settings_new();
+vidhance_stabilizer_settings_t stabilize_settings = vidhance_settings_get_stabilize(settings);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then we can alter a setting for this settings object:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vidhance_stabilizer_settings_set_mode(stabilizeSettings, VIDHANCE_STABILIZER_ON);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally we create the Vidhance context with the base settings object:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;context = vidhance_context_new(settings);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;processing-frames:4d8715ce994286818a53a9e77d960afc&#34;&gt;Processing frames&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;VidhanceProcessor&lt;/em&gt; may inherit either &lt;em&gt;VideoProcessor&lt;/em&gt; or &lt;em&gt;DoubleBufferVideoProcessor&lt;/em&gt;. The difference is purely an optimization so we recommend starting out with a &lt;em&gt;VideoProcessor&lt;/em&gt; implementation. &lt;em&gt;VideoProcessor&lt;/em&gt; will override some of the HAL functions and prepare the camera buffers and metadata for input to Vidhance by creating a &lt;code&gt;frame_data_t&lt;/code&gt; object:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;typedef struct {
+	sp&amp;lt;GraphicBuffer&amp;gt; inputBuffer;
+	sp&amp;lt;GraphicBuffer&amp;gt; outputBuffer;
+	uint64_t timestamp;
+	uint64_t lifetime;
+	uint64_t rollingShutterTime;
+	uint32_t frame_number;
+	float focalLength;
+	int64_t exposureTime;
+	int32_t cropRegion[4];
+} frame_data_t;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The various functions in &lt;em&gt;CameraWrapper&lt;/em&gt; will then be called by &lt;em&gt;VideoProcessor&lt;/em&gt; and the &lt;em&gt;frame_data_t&lt;/em&gt; can be converted into Vidhance compatible types.&lt;/p&gt;
+
+&lt;p&gt;Example showing how a &lt;em&gt;vidhance_image_t&lt;/em&gt; is constructed from &lt;em&gt;GraphicBuffer&lt;/em&gt; :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;vidhance_image_t CameraWrapper::createImage(const sp&amp;lt;GraphicBuffer&amp;gt;&amp;amp; buffer, const FreeFlag flag) {
+	stride_t stride = this-&amp;gt;getStride(buffer);
+	int uvOffset = stride.horizontal * stride.vertical;
+	vidhance_int_vector_2d_t size = vidhance_int_vector_2d_new(buffer-&amp;gt;width, buffer-&amp;gt;height);
+	GraphicBufferWrapper* wrapper = new GraphicBufferWrapper(buffer, flag);
+	// Image objects for Vidhance. Ownership is passed to Vidhance when processed, hence memory management is handled internally.
+	vidhance_graphic_buffer_t wrappedBuffer = vidhance_graphic_buffer_new((void*)wrapper, (void*)buffer-&amp;gt;getNativeBuffer(),
+			(void*)buffer-&amp;gt;handle, size, stride.horizontal, buffer-&amp;gt;format);
+	return vidhance_graphic_buffer_yuv_420_semiplanar_new(wrappedBuffer, size, stride.horizontal, uvOffset);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Example showing how a &lt;em&gt;vidhance_frame_t&lt;/em&gt; is constructed from metadata:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;vidhance_frame_t CameraWrapper::createFrame(const frame_data_t&amp;amp; frame, const vidhance_image_t image) {
+	int activePixelArrayWidth = this-&amp;gt;cameraMeta.activePixelArraySize[2];
+	int activePixelArrayHeight = this-&amp;gt;cameraMeta.activePixelArraySize[3];
+	int maxPixelArrayWidth = this-&amp;gt;cameraMeta.pixelArraySize[0];
+	int resolutionWidth = frame.inputBuffer-&amp;gt;width;
+	float focalLength = frame.focalLength;
+	float sensorWidth = this-&amp;gt;cameraMeta.physicalSize[0];
+	float focalLengthPixels = float(resolutionWidth) * focalLength / sensorWidth;
+	float cropY = 1.0f;
+	if(activePixelArrayWidth &amp;gt; 0 &amp;amp;&amp;amp; activePixelArrayHeight &amp;gt; 0) {
+		//Note: This is actually more correct but the cropRegion metadata gives incorrect information on some devices
+		//float cropY = (float)frame.cropRegion[3] / activePixelArrayHeight;
+		//This approximation will do for now
+		cropY = ((float)activePixelArrayWidth * frame.inputBuffer-&amp;gt;height) / (activePixelArrayHeight * frame.inputBuffer-&amp;gt;width);
+	}
+
+	int64_t croppedReadout = frame.rollingShutterTime * cropY;
+	int64_t timestampOffset = (frame.rollingShutterTime - croppedReadout) / 2;
+	uint64_t timestamp = frame.timestamp + timestampOffset;
+	vidhance_time_span_t readoutSpan = vidhance_time_span_new(NS_TO_TICKS(croppedReadout));
+	vidhance_time_span_t exposureTime = vidhance_time_span_new(NS_TO_TICKS(frame.exposureTime));
+	vidhance_frame_header_t header = vidhance_header_new(vidhance_date_time_new(NS_TO_TICKS(timestamp)), vidhance_time_span_new(NS_TO_TICKS(frame.lifetime)),
+			readoutSpan, focalLengthPixels, exposureTime);
+	return vidhance_frame_from_image(header, image);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When the &lt;em&gt;vidhance_frame_t&lt;/em&gt; has been created, it can be sent to Vidhance:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;void CameraWrapper::processVideoCapture(const frame_data_t&amp;amp; frame) {
+	vidhance_context_process_output(context, this-&amp;gt;createFrame(frame, this-&amp;gt;createImage(frame.inputBuffer)),
+			this-&amp;gt;createFrame(frame, this-&amp;gt;createImage(frame.outputBuffer)));
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;running:4d8715ce994286818a53a9e77d960afc&#34;&gt;Running&lt;/h1&gt;
+
+&lt;h2 id=&#34;instructions:4d8715ce994286818a53a9e77d960afc&#34;&gt;Instructions&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Make sure you have successfully executed the &lt;code&gt;setup_device&lt;/code&gt; function so the backend library and the Vidhance library exist on the device (see &lt;a href=&#34;#PreparingPhoneForWrapper&#34;&gt;Preparing phone for wrapper&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Build your implementation (see &lt;a href=&#34;#Building&#34;&gt;Building&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Push the wrapper to the device (see &lt;a href=&#34;#PushingToPhone&#34;&gt;Pushing to phone&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;You can now use any camera app on the device to view the results.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;what-to-expect:4d8715ce994286818a53a9e77d960afc&#34;&gt;What to expect&lt;/h2&gt;
+
+&lt;p&gt;If you have successfully built and pushed the correct files to your device you should be able to notice modifications in the captured video. If you used the default settings when creating the Vidhance context you can expect to see the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A Vidhance logo in the upper right corner&lt;/li&gt;
+&lt;li&gt;Version number in the bottom right corner&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If your result is not as expected you can proceed to the next chapter or contact our support via the chat widget on this page.&lt;/p&gt;
+
+&lt;h1 id=&#34;troubleshooting:4d8715ce994286818a53a9e77d960afc&#34;&gt;Troubleshooting&lt;/h1&gt;
+
+&lt;p&gt;The Vidhance binary includes useful print output which can be captured by configuring the &lt;code&gt;debugPrint&lt;/code&gt; callback to a function of your choice (see &lt;a href=&#34;#DebugPrint&#34;&gt;Debug print&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;UsingMonitor&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;using-monitor:4d8715ce994286818a53a9e77d960afc&#34;&gt;Using Monitor&lt;/h2&gt;
+
+&lt;p&gt;The default callback for output is located in &lt;em&gt;vidhance/debug/Debug.h&lt;/em&gt; and will print the output to Android&amp;rsquo;s logging system &lt;code&gt;logcat&lt;/code&gt;. This output can be captured by using Monitor which is included in the Android SDK. Follow these steps:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Download Android SDK &lt;a href=&#34;http://developer.android.com/sdk/index.html&#34;&gt;here&lt;/a&gt;. We will only need the package listed under &lt;code&gt;SDK Tools Only&lt;/code&gt;, but the full &lt;code&gt;Android Studio&lt;/code&gt; package contains the SDK as well.&lt;/li&gt;
+&lt;li&gt;Run &lt;em&gt;monitor&lt;/em&gt; located in &lt;em&gt;android-sdks/tools&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Make sure your device is connected by USB and with USB debugging enabled. You should see your device listed in the Android Device Monitor window.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create a new filter with these settings:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Filter Name:&lt;/em&gt; Vidhance&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;by Log Tag:&lt;/em&gt; Vidhance&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;by Log Level:&lt;/em&gt; verbose&lt;/li&gt;
+&lt;li&gt;Leave the rest blank.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You should now get output to the filter from the Vidhance library when your device is capturing video.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If you have problems with crashes it can be helpful to get the backtrace from the device. Create another filter with these settings:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Filter Name:&lt;/em&gt; Debug&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;by Log Tag:&lt;/em&gt; DEBUG&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;by Log Level:&lt;/em&gt; verbose&lt;/li&gt;
+&lt;li&gt;Leave the rest blank.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;When the device crashes you can check the backtrace in the debug filter for useful information.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Requirement Specification Template</title>
+      <link>http://support.vidhance.com/android/validate/requirements/</link>
+      <pubDate>Wed, 11 Mar 2015 14:32:03 +0100</pubDate>
+      
+      <guid>http://support.vidhance.com/android/validate/requirements/</guid>
+      <description>
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;1-general:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;1 General&lt;/h1&gt;
+
+&lt;h2 id=&#34;1-1-identification:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;1.1 Identification&lt;/h2&gt;
+
+&lt;p&gt;Vidhance Mobile is a unique real-time, purpose-built all-software video stabilization solution for mobile devices. The solution complements existing stabilization technologies, thereby augmenting camera capabilities and removes unwanted wobbling and swaying that occurs in most videos shot on a handheld device. Vidhance is a 3rd generation solution needed to propel widespread video clip sharing to the levels where still photo sharing is today.&lt;/p&gt;
+
+&lt;p&gt;This document acts as a template for how a requirement specification can be structured for Vidhance Mobile. A complete specification is produced in collaboration with the customer.&lt;/p&gt;
+
+&lt;h2 id=&#34;1-2-definitions:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;1.2 Definitions&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;frame rate&lt;/strong&gt; The rate at which frames are recorded and/or processed. &lt;br&gt;
+&lt;strong&gt;fps&lt;/strong&gt; Frames Per Second - The number of frames for each second of video. &lt;br&gt;
+&lt;strong&gt;real-time&lt;/strong&gt; The ability of a system to process data in the same rate as it is gathered. &lt;br&gt;
+&lt;strong&gt;720p&lt;/strong&gt; A resolution of 1280 x 720 pixels. &lt;br&gt;
+&lt;strong&gt;1080p&lt;/strong&gt; A resolution of 1920 x 1080 pixels. &lt;br&gt;
+&lt;strong&gt;2160p&lt;/strong&gt; A resolution of 4096 x 2160 pixels. &lt;br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;1-3-revision-history:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;1.3 Revision History&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;revision 1&lt;/em&gt; Emil Westergren 2015-05-26&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;2-system-overview:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;2 System Overview&lt;/h1&gt;
+
+&lt;h2 id=&#34;2-1-problem-description:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;2.1 Problem Description&lt;/h2&gt;
+
+&lt;p&gt;Recording video with smartphone devices is becoming increasingly more popular in today&amp;rsquo;s market. Practically all smartphones on the market have at least one camera sensor and the ability to capture video. A major problem with capturing quality video on a smartphone is the difficulty of keeping the device steady enough for the video to be stable and free from unintended motion from the photographer. This results in video with poor quality which makes it unpleasant to the eye.&lt;/p&gt;
+
+&lt;h2 id=&#34;2-2-system-context:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;2.2 System Context&lt;/h2&gt;
+
+&lt;p&gt;Video recording with a smartphone is usually spontaneously captured, with the photographer controlling the camera by hand and perhaps also moving around while recording.&lt;/p&gt;
+
+&lt;h2 id=&#34;2-3-system-usage:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;2.3 System Usage&lt;/h2&gt;
+
+&lt;p&gt;Vidhance is used to stabilize the video in real-time during the recording, resulting in a stabilized, high quality video without the need of post-processing.&lt;/p&gt;
+
+&lt;h2 id=&#34;2-4-platform-prerequisites:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;2.4 Platform Prerequisites&lt;/h2&gt;
+
+&lt;h3 id=&#34;2-4-1-hardware:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;2.4.1 Hardware&lt;/h3&gt;
+
+&lt;p&gt;&amp;mdash;Insert hardware specifications for target device&amp;mdash;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-4-2-operating-system-and-library-dependencies:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;2.4.2 Operating System and Library Dependencies&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Android 5.0&lt;/li&gt;
+&lt;li&gt;OpenGL ES 3&lt;/li&gt;
+&lt;li&gt;EGLImage extension&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-5-recording-prerequisites:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;2.5 Recording Prerequisites&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The user moves with a maximum speed of 1 m/s&lt;/li&gt;
+&lt;li&gt;The camera is held as steady as possible, using both hands with a firm grip on each side of the camera. The elbows should stay close to the body. Movements when holding the camera should be as slow and gentle as possible.&lt;/li&gt;
+&lt;li&gt;The scene has sufficient light from the sun or other light sources&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;3-technical-requirements:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;3 Technical requirements&lt;/h1&gt;
+
+&lt;h2 id=&#34;3-1-general-requirements:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;3.1 General Requirements&lt;/h2&gt;
+
+&lt;h3 id=&#34;3-1-1-performance:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;3.1.1 Performance&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;prf01&lt;/strong&gt; The recording runs continuously for 30 minutes or until the maximum file size is reached. &lt;br&gt;
+&lt;strong&gt;prf02&lt;/strong&gt; Less than 3% frames dropped when recording 2160p video with a frame rate of 30 fps. &lt;br&gt;
+&lt;strong&gt;prf03&lt;/strong&gt; Less than 2% frames dropped when recording 1080p video with a frame rate of 30 fps. &lt;br&gt;
+&lt;strong&gt;prf04&lt;/strong&gt; Less than 1% frames dropped when recording 720p video with a frame rate of 30 fps. &lt;br&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;3-1-2-power-usage:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;3.1.2 Power usage&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;pwu01&lt;/strong&gt; Having the stabilization enabled increases the power usage with a maximum of 30% during recording.&lt;/p&gt;
+
+&lt;h2 id=&#34;3-2-scenario-requirements:a05dcee144da6675ae9d2fe98e94d8dd&#34;&gt;3.2 Scenario Requirements&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;sce01&lt;/strong&gt; The product shall perform better for at least 4 out of 5 of the following scenarios compared to with the product disabled. &lt;br&gt;
+&lt;strong&gt;sce02&lt;/strong&gt; Walking forward in lit indoor scene. &lt;br&gt;
+&lt;strong&gt;sce03&lt;/strong&gt; Sideways recording of moving person in sunlight. &lt;br&gt;
+&lt;strong&gt;sce04&lt;/strong&gt; Rotation around moving object in cloudy outdoor scene. &lt;br&gt;
+&lt;strong&gt;sce05&lt;/strong&gt; Rotation around user in lit indoor scene. &lt;br&gt;
+&lt;strong&gt;sce06&lt;/strong&gt; Transition to/from shade in sunny outdoor scene. &lt;br&gt;
+&lt;strong&gt;sce07&lt;/strong&gt; Zoomed capture of distant target in sunny outdoor scene. &lt;br&gt;&lt;/p&gt;
+
+&lt;!-- **sce02** The product shall perform equal or better for at least 80% of the following scenarios compared to the solutions on Apple iPhone 6 and Sony Xperia Z3.
+### 3.2.1 Light Conditions
+**lit01** A lit indoor scene. &lt;br&gt;
+**lit02** A sunny outdoor scene. &lt;br&gt;
+**lit03** A cloudy outdoor scene. &lt;br&gt;
+**lit04** Transitions between shade and sunlight. &lt;br&gt;
+
+### 3.2.2 User Movement
+**umv01** *Stationary* - The user remains stationary during the recording. &lt;br&gt;
+**umv02** *Moving forward/backward* - The user walks forward/backward at a maximum speed of 1 m/s. &lt;br&gt;
+**umv03** *Moving sideways* - As in **umv02** but instead recording to the right or left side. &lt;br&gt;
+**umv04** *Rotation around object* - The user rotates around the object in focus. &lt;br&gt;
+**umv05** *Rotation around user* - The user rotates around himself/herself. &lt;br&gt;
+
+### 3.2.3 Scene Movement
+**omv01** *Static* - No moving objects in the scene. &lt;br&gt;
+**omv02** *Dynamic* - A maximum of five moving objects in the scene. &lt;br&gt; --&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Validate</title>
+      <link>http://support.vidhance.com/android/validate/</link>
+      <pubDate>Wed, 11 Mar 2015 14:32:03 +0100</pubDate>
+      
+      <guid>http://support.vidhance.com/android/validate/</guid>
+      <description>&lt;p&gt;Templates for requirement and test specifications for Vidhance Mobile Stabilization.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;../validate/requirements/&#34;&gt;Requirement Specification Template&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;../validate/tests/&#34;&gt;Test Specification Template&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Vidhance API reference</title>
+      <link>http://support.vidhance.com/android/apireference/</link>
+      <pubDate>Wed, 11 Mar 2015 14:32:03 +0100</pubDate>
+      
+      <guid>http://support.vidhance.com/android/apireference/</guid>
+      <description>&lt;p&gt;This section will describe the available methods and types in the Vidhance API along with a few simple examples.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;../api/initializing/&#34;&gt;Initializing Vidhance&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;../api/settings/&#34;&gt;Creating and adjusting settings&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;../api/contexts/&#34;&gt;Creating contexts&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;../api/processing/&#34;&gt;Processing frames&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Vidhance Mobile Test Specification</title>
+      <link>http://support.vidhance.com/android/validate/tests/</link>
+      <pubDate>Wed, 11 Mar 2015 14:32:03 +0100</pubDate>
+      
+      <guid>http://support.vidhance.com/android/validate/tests/</guid>
+      <description>
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;1-general:ac94ff63440ead02e029c796131baec5&#34;&gt;1 General&lt;/h1&gt;
+
+&lt;h2 id=&#34;1-1-identification:ac94ff63440ead02e029c796131baec5&#34;&gt;1.1 Identification&lt;/h2&gt;
+
+&lt;p&gt;This document acts as a template for the testing procedures that verifies Vidhance Mobile against the &lt;a href=&#34;../requirements/&#34;&gt;requirement specification&lt;/a&gt;. A complete specification is produced in collaboration with the customer.&lt;/p&gt;
+
+&lt;h2 id=&#34;1-2-revision-history:ac94ff63440ead02e029c796131baec5&#34;&gt;1.2 Revision history&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;revision 1&lt;/em&gt; Emil Westergren 2015-05-26
+&lt;br&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;2-test-specifications:ac94ff63440ead02e029c796131baec5&#34;&gt;2 Test Specifications&lt;/h1&gt;
+
+&lt;h2 id=&#34;2-1-performance:ac94ff63440ead02e029c796131baec5&#34;&gt;2.1 Performance&lt;/h2&gt;
+
+&lt;h3 id=&#34;2-1-1-endurance:ac94ff63440ead02e029c796131baec5&#34;&gt;2.1.1 Endurance&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Objectives&lt;/strong&gt; &lt;br&gt;
+Verifies the capability of stabilizing video over longer periods of time.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Requirements verified&lt;/strong&gt; &lt;br&gt;
+&lt;strong&gt;prf01&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Setup&lt;/strong&gt; &lt;br&gt;
+Reboot the device.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Procedure&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Set the resolution to 1280 x 720 and frame rate to 120 fps.&lt;/li&gt;
+&lt;li&gt;Start the recording.&lt;/li&gt;
+&lt;li&gt;Wait for 30 minutes or until the maximum file size is reached.&lt;/li&gt;
+&lt;li&gt;Verify that the video was successfully recorded.&lt;/li&gt;
+&lt;li&gt;Set the resolution to 1920 x 1080 and frame rate to 60 fps.&lt;/li&gt;
+&lt;li&gt;Repeat steps 2-4.&lt;/li&gt;
+&lt;li&gt;Set the resolution to 4096 x 2160 and frame rate to 30 fps.&lt;/li&gt;
+&lt;li&gt;Repeat steps 2-4.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;2-1-2-processing-speed:ac94ff63440ead02e029c796131baec5&#34;&gt;2.1.2 Processing speed&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Objectives&lt;/strong&gt; &lt;br&gt;
+Verifies the capability of stabilizing video without frame drops.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Requirements verified&lt;/strong&gt; &lt;br&gt;
+&lt;strong&gt;prf02&lt;/strong&gt; &lt;strong&gt;prf03&lt;/strong&gt; &lt;strong&gt;prf04&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Setup&lt;/strong&gt; &lt;br&gt;
+Reboot the device.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Procedure&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Set the resolution to 1280 x 720 and frame rate to 120 fps.&lt;/li&gt;
+&lt;li&gt;Start the recording.&lt;/li&gt;
+&lt;li&gt;Wait for 5 minutes.&lt;/li&gt;
+&lt;li&gt;Verify that the number of frames dropped is less than specified.&lt;/li&gt;
+&lt;li&gt;Set the resolution to 1920 x 1080 and frame rate to 60 fps.&lt;/li&gt;
+&lt;li&gt;Repeat steps 2-4.&lt;/li&gt;
+&lt;li&gt;Set the resolution to 4096 x 2160 and frame rate to 30 fps.&lt;/li&gt;
+&lt;li&gt;Repeat steps 2-4.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;2-2-scenarios:ac94ff63440ead02e029c796131baec5&#34;&gt;2.2 Scenarios&lt;/h2&gt;
+
+&lt;h3 id=&#34;2-2-1-walking-forward-in-lit-indoor-scene:ac94ff63440ead02e029c796131baec5&#34;&gt;2.2.1 Walking forward in lit indoor scene&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Objectives&lt;/strong&gt; &lt;br&gt;
+Verifies the capability of stabilizing video in an indoor environment while walking.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Requirements verified&lt;/strong&gt; &lt;br&gt;
+&lt;strong&gt;sce02&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Setup&lt;/strong&gt; &lt;br&gt;
+Reboot the device. Make sure the scene does not contain any moving objects.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Procedure&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Stand up with the camera in a steady grip in the beginning of the corridor.&lt;/li&gt;
+&lt;li&gt;Start the recording and slowly walk forward at a maximum speed of 1 m/s.&lt;/li&gt;
+&lt;li&gt;Stop the recording after 10 m.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;2-2-2-sideways-recording-of-moving-person-in-sunlight:ac94ff63440ead02e029c796131baec5&#34;&gt;2.2.2 Sideways recording of moving person in sunlight&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Objectives&lt;/strong&gt; &lt;br&gt;
+Verifies the capability of stabilizing video in an sunny outdoor environment while walking sideways and recording a moving object.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Requirements verified&lt;/strong&gt; &lt;br&gt;
+&lt;strong&gt;sce03&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Setup&lt;/strong&gt; &lt;br&gt;
+Reboot the device.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Procedure&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Stand up with the camera in a steady grip in the beginning of the corridor.&lt;/li&gt;
+&lt;li&gt;Start the recording and slowly walk forward at a maximum speed of 1 m/s.&lt;/li&gt;
+&lt;li&gt;Stop the recording after 10 m.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;2-2-3-rotation-around-moving-object-in-cloudy-outdoor-scene:ac94ff63440ead02e029c796131baec5&#34;&gt;2.2.3 Rotation around moving object in cloudy outdoor scene&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Objectives&lt;/strong&gt; &lt;br&gt;
+Verifies the capability of stabilizing video in an cloudy outdoor environment while rotating around a moving object.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Requirements verified&lt;/strong&gt; &lt;br&gt;
+&lt;strong&gt;sce04&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Setup&lt;/strong&gt; &lt;br&gt;
+Reboot the device.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Procedure&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Stand up with the camera in a steady grip.&lt;/li&gt;
+&lt;li&gt;Start the recording and slowly rotate around the object while keeping it centered and in focus.&lt;/li&gt;
+&lt;li&gt;Stop the recording after two full rotations.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;2-2-4-rotation-around-user-in-indoor-scene:ac94ff63440ead02e029c796131baec5&#34;&gt;2.2.4 Rotation around user in indoor scene&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Objectives&lt;/strong&gt; &lt;br&gt;
+Verifies the capability of stabilizing video in an indoor environment while rotating around the user.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Requirements verified&lt;/strong&gt; &lt;br&gt;
+&lt;strong&gt;sce05&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Setup&lt;/strong&gt; &lt;br&gt;
+Reboot the device.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Procedure&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Stand up with the camera in a steady grip.&lt;/li&gt;
+&lt;li&gt;Start the recording and slowly rotate around the user.&lt;/li&gt;
+&lt;li&gt;Stop the recording after two full rotations.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;2-2-5-transitions-to-from-shade-in-sunny-outdoor-scene:ac94ff63440ead02e029c796131baec5&#34;&gt;2.2.5 Transitions to/from shade in sunny outdoor scene&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Objectives&lt;/strong&gt; &lt;br&gt;
+Verifies the capability of stabilizing video in an sunny outdoor environment while transitioning from shade.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Requirements verified&lt;/strong&gt; &lt;br&gt;
+&lt;strong&gt;sce06&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Setup&lt;/strong&gt; &lt;br&gt;
+Reboot the device. Make sure the scene does not contain any moving objects.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Procedure&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Stand up with the camera in a steady grip standing in sunlight.&lt;/li&gt;
+&lt;li&gt;Start the recording and slowly walk towards and enter a shaded area.&lt;/li&gt;
+&lt;li&gt;Walk out from the shaded area.&lt;/li&gt;
+&lt;li&gt;Stop the recording.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;2-2-6-zoomed-capture-of-distant-target-in-sunny-outdoor-scene:ac94ff63440ead02e029c796131baec5&#34;&gt;2.2.6 Zoomed capture of distant target in sunny outdoor scene&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Objectives&lt;/strong&gt; &lt;br&gt;
+Verifies the capability of stabilizing video in an sunny outdoor environment while zoomed in on distant target.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Requirements verified&lt;/strong&gt; &lt;br&gt;
+&lt;strong&gt;sce07&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Setup&lt;/strong&gt; &lt;br&gt;
+Reboot the device. Make sure the target can be captured without obstacles blocking the view.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Procedure&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Stand up with the camera in a steady grip standing in sunlight.&lt;/li&gt;
+&lt;li&gt;Zoom in as much as possible on the target.&lt;/li&gt;
+&lt;li&gt;Start the recording and try to keep the target centered in the preview.&lt;/li&gt;
+&lt;li&gt;Stop the recording.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Vidhance SDK for Android</title>
+      <link>http://support.vidhance.com/android/</link>
+      <pubDate>Wed, 11 Mar 2015 14:32:03 +0100</pubDate>
+      
+      <guid>http://support.vidhance.com/android/</guid>
+      <description>
+
+&lt;h1 id=&#34;prerequisites:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Prerequisites&lt;/h1&gt;
+
+&lt;h2 id=&#34;system-requirements:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;System Requirements&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Quad-core 2300 MHz processor&lt;/li&gt;
+&lt;li&gt;2 GB RAM&lt;/li&gt;
+&lt;li&gt;OpenGL ES 3.0&lt;/li&gt;
+&lt;li&gt;EGLImage extension&lt;/li&gt;
+&lt;li&gt;Android 4.4.4, Android 5.0 or higher&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;evaluate:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Evaluate&lt;/h1&gt;
+
+&lt;h2 id=&#34;nexus-6:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Nexus 6&lt;/h2&gt;
+
+&lt;p&gt;If you want to evaluate Vidhance we can provide you with an Android image with Vidhance included and instructions how to flash on Nexus 6. &lt;a href=&#34;evaluate&#34;&gt;Click here for instructions&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;integration:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Integration&lt;/h1&gt;
+
+&lt;p&gt;Vidhance SDK is based on a versatile C library with the possibility of integration at many different levels.&lt;/p&gt;
+
+&lt;h2 id=&#34;wrap-driver:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Wrap Driver&lt;/h2&gt;
+
+&lt;p&gt;We provide solutions to wrap the camera driver on your device and implement Vidhance as a modular middle layer between the operating system and the camera driver. This is a smooth solution when you do not want to modify the actual camera driver but want Vidhance integrated on a system level. &lt;a href=&#34;gettingstarted&#34;&gt;Click here for instructions&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;into-driver:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Into Driver&lt;/h2&gt;
+
+&lt;p&gt;If you are interested in using Vidhance at a driver level we provide support for integration in conjunction with low level optimizations.&lt;/p&gt;
+
+&lt;h2 id=&#34;into-app:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Into App&lt;/h2&gt;
+
+&lt;p&gt;We offer the possibility to enhance your application with Vidhance technology by using the Android Native Development Kit to gain the performance of a low level API at application level.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://support.vidhance.com/android/api/contexts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://support.vidhance.com/android/api/contexts/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;../../apireference/&#34;&gt;Back to API overview&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;creating-contexts:7bb109e106e94b989a42a80e60b6a8c5&#34;&gt;Creating contexts&lt;/h1&gt;
+
+&lt;h2 id=&#34;overview:7bb109e106e94b989a42a80e60b6a8c5&#34;&gt;Overview&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-context-t:7bb109e106e94b989a42a80e60b6a8c5&#34;&gt;vidhance_context_t&lt;/h3&gt;
+
+&lt;p&gt;The context in which frames are processed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef struct _vidhance_context_t* vidhance_context_t;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-context-new:7bb109e106e94b989a42a80e60b6a8c5&#34;&gt;vidhance_context_new&lt;/h3&gt;
+
+&lt;p&gt;Creates a new Vidhance context.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;vidhance_context_t vidhance_context_new(vidhance_settings_t settings);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;parameters:7bb109e106e94b989a42a80e60b6a8c5&#34;&gt;Parameters&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;settings&lt;/em&gt; A Vidhance settings object.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-context-free:7bb109e106e94b989a42a80e60b6a8c5&#34;&gt;vidhance_context_free&lt;/h3&gt;
+
+&lt;p&gt;Frees the Vidhance context.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void vidhance_context_free(vidhance_context_t);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;parameters-1:7bb109e106e94b989a42a80e60b6a8c5&#34;&gt;Parameters&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;context&lt;/em&gt; A Vidhance context.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;example:7bb109e106e94b989a42a80e60b6a8c5&#34;&gt;Example&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;vidhance_settings_t settings = vidhance_settings_new();
+vidhance_context_t context = vidhance_context_new(settings);
+vidhance_context_free(context);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://support.vidhance.com/android/api/processing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://support.vidhance.com/android/api/processing/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;../../apireference/&#34;&gt;Back to API overview&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;processing-frames:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;Processing frames&lt;/h1&gt;
+
+&lt;h2 id=&#34;overview:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;Overview&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-context-start:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;vidhance_context_start&lt;/h3&gt;
+
+&lt;p&gt;Prepares a Vidhance context for a new video stream. This function must be called before the first frame of the stream is sent to Vidhance.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void vidhance_context_start(vidhance_context_t context);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;parameters:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;Parameters&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;context&lt;/em&gt; A Vidhance context.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-context-stop:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;vidhance_context_stop&lt;/h3&gt;
+
+&lt;p&gt;Ends a processing session for the Vidhance context. This function must be called after the last frame of the stream is sent to Vidhance.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void vidhance_context_stop(vidhance_context_t context);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;parameters-1:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;Parameters&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;context&lt;/em&gt; A Vidhance context.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-context-process:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;vidhance_context_process&lt;/h3&gt;
+
+&lt;p&gt;Process a frame in the specified context. Returns a new buffer containing the resulting frame.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;vidhance_frame_t vidhance_context_process(vidhance_context_t context, vidhance_frame_t frame);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;parameters-2:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;Parameters&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;context&lt;/em&gt; The context in which to process.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;frame&lt;/em&gt; The input frame.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-context-process-output:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;vidhance_context_process_output&lt;/h3&gt;
+
+&lt;p&gt;Process a frame in the specified context using different buffers as input and output.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void vidhance_context_process_output(vidhance_context_t context, vidhance_frame_t input, vidhance_frame_t output);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;parameters-3:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;Parameters&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;context&lt;/em&gt; The context in which to process.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;input&lt;/em&gt; The input frame.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;output&lt;/em&gt; The output frame where the result is written.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-context-process-preview:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;vidhance_context_process_preview&lt;/h3&gt;
+
+&lt;p&gt;Process the preview buffer.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void vidhance_context_process_preview(vidhance_context_t context, vidhance_frame_t input);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;parameters-4:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;Parameters&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;context&lt;/em&gt; The context in which to process.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;input&lt;/em&gt; The input frame.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-int-vector-2d-t:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;vidhance_int_vector_2d_t&lt;/h3&gt;
+
+&lt;p&gt;2D vector used by Vidhance.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef struct {
+	int x;
+	int y;
+} vidhance_int_vector_2d_t;
+vidhance_int_vector_2d_t vidhance_int_vector_2d_new(int x, int y);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-image-t:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;vidhance_image_t&lt;/h3&gt;
+
+&lt;p&gt;The base image class used by Vidhance.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef struct _vidhance_image_t* vidhance_image_t;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-date-time-t:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;vidhance_date_time_t&lt;/h3&gt;
+
+&lt;p&gt;Object representing timestamps. 1 tick = 100 nanoseconds.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef struct {
+	uint64_t ticks;
+} vidhance_date_time_t;
+vidhance_date_time_t vidhance_date_time_new(const uint64_t ticks);
+vidhance_date_time_t vidhance_date_time_from_date(int year, int month, int day);
+vidhance_date_time_t vidhance_date_time_from_time(int hour, int minute, int second, int millisecond);
+vidhance_date_time_t vidhance_date_time_from_date_time(int year, int month, int day, int hour, int minute, int second, int millisecond);
+vidhance_date_time_t vidhance_date_time_get_now();
+uint64_t vidhance_date_time_get_ticks(const vidhance_date_time_t);
+int vidhance_date_time_get_millisecond(const vidhance_date_time_t);
+int vidhance_date_time_get_second(const vidhance_date_time_t);
+int vidhance_date_time_get_minute(const vidhance_date_time_t);
+int vidhance_date_time_get_hour(const vidhance_date_time_t);
+int vidhance_date_time_get_day(const vidhance_date_time_t);
+int vidhance_date_time_get_month(const vidhance_date_time_t);
+int vidhance_date_time_get_year(const vidhance_date_time_t);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-time-span-t:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;vidhance_time_span_t&lt;/h3&gt;
+
+&lt;p&gt;Object representing time durations. 1 tick = 100 nanoseconds.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef struct {
+	int64_t ticks;
+} vidhance_time_span_t;
+vidhance_time_span_t vidhance_time_span_new(int64_t ticks);
+vidhance_time_span_t vidhance_time_span_from_data(int hour, int minute, int second, int millisecond);
+int64_t vidhance_time_span_get_ticks(const vidhance_time_span_t);
+vidhance_time_span_t vidhance_time_span_get_negated(const vidhance_time_span_t);
+int64_t vidhance_time_span_get_total_milliseconds(const vidhance_time_span_t);
+int64_t vidhance_time_span_get_total_seconds(const vidhance_time_span_t);
+int64_t vidhance_time_span_get_total_minutes(const vidhance_time_span_t);
+int64_t vidhance_time_span_get_total_hours(const vidhance_time_span_t);
+int64_t vidhance_time_span_get_total_days(const vidhance_time_span_t);
+int64_t vidhance_time_span_get_total_weeks(const vidhance_time_span_t);
+vidhance_time_span_t vidhance_time_span_from_milliseconds(const double count);
+vidhance_time_span_t vidhance_time_span_from_seconds(const double count);
+vidhance_time_span_t vidhance_time_span_from_minutes(const double count);
+vidhance_time_span_t vidhance_time_span_from_hours(const double count);
+vidhance_time_span_t vidhance_time_span_from_days(const double count);
+vidhance_time_span_t vidhance_time_span_from_weeks(const double count);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-header-t:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;vidhance_header_t&lt;/h3&gt;
+
+&lt;p&gt;A header object holding an image and metadata.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef struct _vidhance_frame_header_t* vidhance_frame_header_t;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-graphic-buffer-t:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;vidhance_graphic_buffer_t&lt;/h3&gt;
+
+&lt;p&gt;Corresponds to the GraphicBuffer class in Android.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef struct _vidhance_graphic_buffer_t* vidhance_graphic_buffer_t;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-graphic-buffer-yuv-420-semiplanar-new:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;vidhance_graphic_buffer_yuv_420_semiplanar_new&lt;/h3&gt;
+
+&lt;p&gt;Function for creating a YUV420 image from a GraphicBuffer in Android.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;vidhance_image_t vidhance_graphic_buffer_yuv_420_semiplanar_new(vidhance_graphic_buffer_t buffer, vidhance_int_vector_2d_t size, int stride, int uv_offset);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;parameters-5:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;Parameters&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;buffer&lt;/em&gt; The buffer containing the image.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;size&lt;/em&gt; Image resolution.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;stride&lt;/em&gt; Image stride in bytes&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;uv_offset&lt;/em&gt; Offset in bytes to the uv plane in the buffer.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;example:9633d27b7a2b1f04c4bfd4a47cc90697&#34;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;Prepare the Vidhance context for a new video session.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;vidhance_context_start(context);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create &lt;code&gt;vidhance_image_t&lt;/code&gt; from Android GraphicBuffer.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;vidhance_image_t image = vidhance_graphic_buffer_yuv_420_semiplanar_new(buffer, vidhance_int_vector_2d_new(1920, 1080), 1920, 1920 * 1080);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create &lt;code&gt;vidhance_header_t&lt;/code&gt; from metadata.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;vidhance_header_t header = vidhance_header_new(vidhance_date_time_new(timestamp_ticks), vidhance_time_span_new(lifetime_ticks),
+		readout_ticks, focalLengthPixels, vidhance_time_span_new(exposureTime_ticks));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create &lt;code&gt;vidhance_frame_t&lt;/code&gt; from header and image.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;vidhance_frame_t frame = vidhance_frame_from_image(header, image);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Process frame.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;vidhance_context_process_output(context, inputFrame, outputFrame);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Process preview frames.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;vidhance_context_process_preview(context, previewFrame);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;End the video session.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;vidhance_context_stop(context);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://support.vidhance.com/android/api/initializing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://support.vidhance.com/android/api/initializing/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;../../apireference/&#34;&gt;Back to API overview&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;initializing-vidhance:e66080406e08ea418c4514211206a926&#34;&gt;Initializing Vidhance&lt;/h1&gt;
+
+&lt;h2 id=&#34;overview:e66080406e08ea418c4514211206a926&#34;&gt;Overview&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-load:e66080406e08ea418c4514211206a926&#34;&gt;vidhance_load&lt;/h3&gt;
+
+&lt;p&gt;Initializes the Vidhance library. Must be called before anything else can be used.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void vidhance_load();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-graphic-buffer-register-callbacks:e66080406e08ea418c4514211206a926&#34;&gt;vidhance_graphic_buffer_register_callbacks&lt;/h3&gt;
+
+&lt;p&gt;Registers a number of necessary callbacks for Vidhance to allocate graphics memory. The necessary callbacks are included in the SDK and should not be defined by the user.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void vidhance_graphic_buffer_register_callbacks(void (*allocate)(int, int, int, int, void**, void**, int*),
+		void (*create)(int, int, int, int, int, void*, bool, void**, void**), void (*free)(void*), void (*lock)(void*, bool, void**),
+		void (*unlock)(void*));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-debug-register-callback:e66080406e08ea418c4514211206a926&#34;&gt;vidhance_debug_register_callback&lt;/h3&gt;
+
+&lt;p&gt;Registers a callback for debug prints from inside the Vidhance library. A default callback is provided in the SDK where the output is directed to the Android logging system (logcat). The user is however free to use a custom callback.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void vidhance_debug_register_callback(void (*print)(const char*));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;parameters:e66080406e08ea418c4514211206a926&#34;&gt;Parameters&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;print&lt;/em&gt; A function pointer to a callback which handles the debug output.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;example:e66080406e08ea418c4514211206a926&#34;&gt;Example&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;vidhance_load();
+vidhance_debug_register_callback(debugPrint);
+vidhance_graphic_buffer_register_callbacks(allocateGraphicBuffer, createGraphicBuffer, freeGraphicBuffer, lockGraphicBuffer,
+		unlockGraphicBuffer);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://support.vidhance.com/android/api/settings/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://support.vidhance.com/android/api/settings/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;../../apireference/&#34;&gt;Back to API overview&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;creating-and-adjusting-settings:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;Creating and adjusting settings&lt;/h1&gt;
+
+&lt;h2 id=&#34;overview:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;Overview&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-settings-t:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;vidhance_settings_t&lt;/h3&gt;
+
+&lt;p&gt;The base settings object.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;typedef struct _vidhance_settings_t* vidhance_settings_t;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-settings-new:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;vidhance_settings_new&lt;/h3&gt;
+
+&lt;p&gt;Creates a new Vidhance settings object.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vidhance_settings_t vidhance_settings_new();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-motion-settings-t:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;vidhance_motion_settings_t&lt;/h3&gt;
+
+&lt;p&gt;The motion settings object.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;typedef struct _vidhance_motion_settings_t* vidhance_motion_settings_t;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-settings-get-motion:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;vidhance_settings_get_motion&lt;/h3&gt;
+
+&lt;p&gt;Returns the motion settings object.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vidhance_motion_settings_t vidhance_settings_get_motion(vidhance_settings_t settings);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;parameters:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;Parameters&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;settings&lt;/em&gt; A base settings object.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-motion-sensor-settings-t:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;vidhance_motion_sensor_settings_t&lt;/h3&gt;
+
+&lt;p&gt;The settings object for external motion sensors.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;typedef struct _vidhance_motion_sensor_settings_t* vidhance_motion_sensor_settings_t;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-motion-settings-get-sensor:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;vidhance_motion_settings_get_sensor&lt;/h3&gt;
+
+&lt;p&gt;Returns the motion sensor settings object.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vidhance_motion_sensor_settings_t vidhance_motion_settings_get_sensor(vidhance_motion_settings_t settings);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;parameters-1:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;Parameters&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;settings&lt;/em&gt; A motion settings object.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-motion-sensor-settings-set-rotation:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;vidhance_motion_sensor_settings_set_rotation&lt;/h3&gt;
+
+&lt;p&gt;Registers an external rotation sensor in the motion sensor settings.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;void vidhance_motion_sensor_settings_set_rotation(vidhance_motion_sensor_settings_t settings, vidhance_motion_sensor_t rotation_sensor);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;parameters-2:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;Parameters&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;settings&lt;/em&gt; A motion sensor settings object.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;rotation_sensor&lt;/em&gt; A rotation sensor object.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-stabilizer-settings-t:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;vidhance_stabilizer_settings_t&lt;/h3&gt;
+
+&lt;p&gt;The stabilization settings object.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;typedef struct _vidhance_stabilizer_settings_t* vidhance_stabilizer_settings_t;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-settings-get-stabilize:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;vidhance_settings_get_stabilize&lt;/h3&gt;
+
+&lt;p&gt;Returns the stabilizer settings object.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vidhance_stabilizer_settings_t vidhance_settings_get_stabilize(const vidhance_settings_t settings);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;parameters-3:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;Parameters&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;settings&lt;/em&gt; A Vidhance settings object.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-stabilizer-mode-t:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;vidhance_stabilizer_mode_t&lt;/h3&gt;
+
+&lt;p&gt;The available modes for the stabilization module.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;VIDHANCE_STABILIZER_OFF - Stabilization turned off.&lt;/li&gt;
+&lt;li&gt;VIDHANCE_STABILIZER_ON - Stabilization turned on.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;typedef enum {
+	VIDHANCE_STABILIZER_OFF,
+	VIDHANCE_STABILIZER_ON
+} vidhance_stabilizer_mode_t;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;vidhance-motion-stabilize-settings-set-mode:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;vidhance_motion_stabilize_settings_set_mode&lt;/h3&gt;
+
+&lt;p&gt;Sets the stabilization mode.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;void vidhance_stabilizer_settings_set_mode(vidhance_stabilizer_settings_t settings, vidhance_stabilizer_mode_t mode);
+vidhance_stabilizer_mode_t vidhance_stabilizer_settings_get_mode(const vidhance_stabilizer_settings_t settings);
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;parameters-4:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;Parameters&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;settings&lt;/em&gt; A stabilize settings object.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;mode&lt;/em&gt; One of the modes in vidhance_stabilizer_mode_t.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;example:fa1a9aa7bf3e774ccda21a0a7b1222dd&#34;&gt;Example&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;vidhance_settings_t settings = vidhance_settings_new();
+vidhance_stabilizer_settings_t stabilizeSettings = vidhance__settings_get_stabilize(settings);
+vidhance_stabilizer_settings_set_mode(stabilizeSettings, VIDHANCE_STABILIZER_ON);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

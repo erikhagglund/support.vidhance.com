@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vidviews on Vidhance Support</title>
+    <link>http://support.vidhance.com/vidview/</link>
+    <description>Recent content in Vidviews on Vidhance Support</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Mar 2015 14:32:03 +0100</lastBuildDate>
+    <atom:link href="http://support.vidhance.com/vidview/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Vidview SDK</title>
+      <link>http://support.vidhance.com/vidview/</link>
+      <pubDate>Wed, 11 Mar 2015 14:32:03 +0100</pubDate>
+      
+      <guid>http://support.vidhance.com/vidview/</guid>
+      <description>
+
+&lt;p&gt;This page contains support resources for Imint&amp;rsquo;s Vidview product.&lt;/p&gt;
+
+&lt;h1 id=&#34;prerequisites:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Prerequisites&lt;/h1&gt;
+
+&lt;h2 id=&#34;system-requirements:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;System requirements&lt;/h2&gt;
+
+&lt;p&gt;Vidview requires Windows 7, .NET 4.0 and a GPU from NVidia, ATI/AMD or an Intel HD Graphics 3000 or better.&lt;/p&gt;
+
+&lt;h2 id=&#34;license-key:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;License Key&lt;/h2&gt;
+
+&lt;p&gt;In order to use Vidhance video enhancements and/or extra video codecs you need a license key which is used to request a license for the computer you run on.&lt;/p&gt;
+
+&lt;h2 id=&#34;considerations:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Considerations&lt;/h2&gt;
+
+&lt;p&gt;What to consider before starting the integration of the Vidview SDK are outlined in the &lt;a href=&#34;http://vidview.imint.se/sdk/Vidview Integration Considerations.html&#34;&gt;Vidview Integration Considerations&lt;/a&gt; (&lt;a href=&#34;http://vidview.imint.se/sdk/Vidview Integration Considerations.pdf&#34;&gt;pdf&lt;/a&gt;) document.&lt;/p&gt;
+
+&lt;h1 id=&#34;installing:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Installing&lt;/h1&gt;
+
+&lt;p&gt;Vidview is distributed in two ways:
+&lt;dl&gt;
+    &lt;dt&gt;Installer&lt;/dt&gt;
+    &lt;dd&gt;Installing using the installer is suitable for running the demo application and for integrations using TCP/IP.&lt;/dd&gt;
+    &lt;dt&gt;NuGet&lt;/dt&gt;
+    &lt;dd&gt;Using NuGet to get Vidview is suitable when integrating into .NET applications using Visual Studio.&lt;/dd&gt;
+&lt;/dl&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;installer:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Installer&lt;/h2&gt;
+
+&lt;p&gt;The installation process is described in the &lt;a href=&#34;http://vidview.imint.se/installation/Vidview SDK Demo Installation Guide.html&#34;&gt;Vidview SDK Demo Installation Guide&lt;/a&gt; (&lt;a href=&#34;http://vidview.imint.se/installation/Vidview SDK Demo Installation Guide.pdf&#34;&gt;pdf&lt;/a&gt;).&lt;/p&gt;
+
+&lt;!--
+Download the installer from [here](installation/Imint.Installer.exe) and make sure to have your license key ready.
+--&gt;
+
+&lt;h2 id=&#34;nuget:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;NuGet&lt;/h2&gt;
+
+&lt;p&gt;Using NuGet to get Vidview is suitable when integrating into .NET applications using Visual Studio.&lt;/p&gt;
+
+&lt;p&gt;Instructions are included in the &lt;a href=&#34;http://vidview.imint.se/sdk/net/Vidview .NET SDK Getting Started Guide.html&#34;&gt;Vidview .NET SDK Getting Started Guide&lt;/a&gt; (&lt;a href=&#34;http://vidview.imint.se/sdk/net/Vidview .NET SDK Getting Started Guide.pdf&#34;&gt;pdf&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h1 id=&#34;usage:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Usage&lt;/h1&gt;
+
+&lt;p&gt;There are several ways to use Vidview. Please consult the &lt;a href=&#34;http://vidview.imint.se/sdk/Vidview Integration Considerations.html&#34;&gt;Vidview Integration Considerations&lt;/a&gt; (&lt;a href=&#34;http://vidview.imint.se/sdk/Vidview Integration Considerations.pdf&#34;&gt;pdf&lt;/a&gt;) document for details.&lt;/p&gt;
+
+&lt;dl&gt;
+    &lt;dt&gt;Vidview Demo Application&lt;/dt&gt;
+    &lt;dd&gt;&lt;a href=&#34;http://vidview.imint.se/installation/Vidview SDK Demo Installation Guide.html&#34;&gt;Vidview SDK Demo Installation Guide&lt;/a&gt; (&lt;a href=&#34;http://vidview.imint.se/installation/Vidview SDK Demo Installation Guide.pdf&#34;&gt;pdf&lt;/a&gt;)&lt;/dd&gt;
+    &lt;dt&gt;Vidview .NET SDK&lt;/dt&gt;
+    &lt;dd&gt;&lt;a href=&#34;http://vidview.imint.se/sdk/net/Vidview .NET SDK Getting Started Guide.html&#34;&gt;Vidview .NET SDK Getting Started Guide&lt;/a&gt; (&lt;a href=&#34;http://vidview.imint.se/sdk/net/Vidview .NET SDK Getting Started Guide.pdf&#34;&gt;pdf&lt;/a&gt;)&lt;/dd&gt;
+    &lt;dt&gt;Vidview TCP SDK&lt;/dt&gt;
+    &lt;dd&gt;&lt;a href=&#34;http://vidview.imint.se/sdk/tcp/Vidview TCP SDK Getting Started Guide.html&#34;&gt;Vidview TCP SDK Getting Started Guide&lt;/a&gt; (&lt;a href=&#34;http://vidview.imint.se/sdk/tcp/Vidview TCP SDK Getting Started Guide.pdf&#34;&gt;pdf&lt;/a&gt;)&lt;/dd&gt;
+    &lt;dt&gt;Vidview Media Guide&lt;/dt&gt;
+    &lt;dd&gt;&lt;a href=&#34;http://vidview.imint.se/media/Vidview Media Guide.html&#34;&gt;Vidview Media Guide&lt;/a&gt; (&lt;a href=&#34;http://vidview.imint.se/media/Vidview Media Guide.pdf&#34;&gt;pdf&lt;/a&gt;)&lt;/dd&gt;
+    &lt;dt&gt;Vidview License Management Guide&lt;/dt&gt;
+    &lt;dd&gt;&lt;a href=&#34;http://vidview.imint.se/license/Vidview License Management Guide.html&#34;&gt;Vidview License Management Guide&lt;/a&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h1 id=&#34;examples:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Examples&lt;/h1&gt;
+
+&lt;p&gt;Examples on how to use specific parts of the Vidview SDK are available at &lt;a href=&#34;http://github.com/vidview&#34;&gt;http://github.com/vidview&lt;/a&gt;. Please do request more examples as needed.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

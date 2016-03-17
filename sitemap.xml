@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://support.vidhance.com/</loc>
+    <lastmod>2015-03-11T14:32:03+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/android/evaluate/</loc>
+    <lastmod>2015-03-11T14:32:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/android/apireference/</loc>
+    <lastmod>2015-03-11T14:32:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/android/faq/</loc>
+    <lastmod>2015-03-11T14:32:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/android/</loc>
+    <lastmod>2015-03-11T14:32:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/android/validate/requirements/</loc>
+    <lastmod>2015-03-11T14:32:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/android/validate/tests/</loc>
+    <lastmod>2015-03-11T14:32:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/android/gettingstarted/</loc>
+    <lastmod>2015-03-11T14:32:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/android/validate/</loc>
+    <lastmod>2015-03-11T14:32:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/vidview/</loc>
+    <lastmod>2015-03-11T14:32:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/start/</loc>
+    <lastmod>2015-03-11T14:32:03+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/android/api/contexts/</loc>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/android/api/processing/</loc>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/android/api/initializing/</loc>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/android/api/settings/</loc>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/pc/download/</loc>
+  </url>
+  
+  <url>
+    <loc>http://support.vidhance.com/pc/</loc>
+  </url>
+  
+</urlset>

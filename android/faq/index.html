@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+	
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="generator" content="Hugo 0.14" />
+<title> FAQ &middot; Vidhance Support </title>
+<link rel="canonical" href="http://support.vidhance.com/android/faq/">
+<link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/text.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/menu.css">
+<link rel="stylesheet" href="/css/animation.css">
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/zenburn.min.css">
+<link rel="stylesheet" href="/css/local.css">
+
+</head>
+<body>
+	<header class="no-animation">
+	<a href="/"><img class="no-animation" src="/img/logotype.png"></a>
+	<a id="nav-open-btn" class="nav-btn" href="#">Navigation</a>
+</header>
+
+	<nav class="no-animation">
+	
+	<ul>
+	
+		<li >
+			<a href="/start/">start</a>
+			
+		</li>
+	
+		<li >
+			<a href="/vidview/">vidview</a>
+			
+		</li>
+	
+		<li class="active">
+			<a href="/android/">android</a>
+			<ul>
+
+	<li>
+		<a href="/android/gettingstarted/">getting started</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/apireference/">API reference</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/faq/">FAQ</a>
+		
+	</li>
+
+	<li>
+		<a href="/android/validate/">validate</a>
+		
+	</li>
+
+</ul>
+
+		</li>
+	
+		<li >
+			<a href="/pc/">pc</a>
+			<ul>
+
+	<li>
+		<a href="/pc/download/">download</a>
+		
+	</li>
+
+</ul>
+
+		</li>
+	
+	</ul>
+	<a id="nav-close-btn" class="close-btn" href="#">Return to Content</a>
+</nav>
+
+	<main class="no-animation">
+		<section><article
+	
+	>
+	<header><h1>FAQ</h1></header>
+	
+	
+	<main>
+		
+			
+
+<h2 id="does-vidhance-crop-the-captured-video:4a1318da06786ac52626178ca960109e">Does Vidhance crop the captured video?</h2>
+
+<p>Yes, any video stabilization solution requires a smaller field of view in the resulting video compared to the original. In Vidhance however, the level of trimming can be dynamically set through the API. This enables functions like “Adaptive Zoom”, where the crop can be smoothly adjusted to fit the amplitude of unwanted motion. It also allows to create different video capture modes, such as “normal” and “sports mode”, where the latter will need a smaller field of view as the amplitude of shakes is expected to be higher.</p>
+
+<h2 id="which-socs-are-supported:4a1318da06786ac52626178ca960109e">Which SoCs are supported?</h2>
+
+<p>The quick integration method applied means that the software to a large extent is hardware agnostic. The first successful integrations have been done on various Qualcomm and Nvidia chipsets. After a first successful integration, further hardware specific optimizations and adjustments can be made to further improve performance and quality.</p>
+
+<p>Vidhance should work on most high-end SoCs such as the following:</p>
+
+<ul>
+<li>Qualcomm Snapdragon 800 (Quad-core 2.3 GHz Krait 400, Adreno 330)</li>
+<li>Qualcomm Snapdragon 805 (Quad-core 2.7 GHz Krait 450, Adreno 420)</li>
+<li>Nvidia Tegra 3 (Quad-core 1.2 GHz Cortex-A9)</li>
+</ul>
+
+<h2 id="what-video-resolutions-and-frame-rates-are-supported:4a1318da06786ac52626178ca960109e">What video resolutions and frame rates are supported?</h2>
+
+<p>Vidhance is adjustable to any video resolution. Obviously, the larger the resolution, the better the image computational capacity of the hardware needs to be dimensioned. However, the processor load for the core motion analysis algorithms does not scale proportional to increased video resolution, so it is more a question on efficient image data transfers.</p>
+
+<p>Vidhance is also adjustable to any frame rate, but the higher the frame rate, the better hardware performance is needed. For framerates 120 fps and above, which is intended to be played back at standard frame rates (slow motion replay), the need for video stabilization is reduced, as the slowdown in itself mitigate the instability issues.</p>
+
+<h2 id="latency:4a1318da06786ac52626178ca960109e">Latency?</h2>
+
+<p>Vidhance is uniquely quick, and can perform with less than one frame delay (meaning no look-ahead buffer at all). For consumer devices however, a latency of 2-4 frames is typically used, as this enables better processor load balancing, and thus saves battery time. It is still fast enough to be viable to use the enhanced video in screen preview, or for live streaming purposes.</p>
+
+<p>Vidhance is also being extended with a mode using a lookahead buffer. This will enable further improvements in video stabilization quality, and supports features such as “preemptive stabilization”, where a future known motion can be compensated by letting a smooth motion through earlier.</p>
+
+<h2 id="performance-battery:4a1318da06786ac52626178ca960109e">Performance/Battery?</h2>
+
+<p>The quick integration method typically gives a penalty of around 30% added power consumption during recording. The majority of processor time is however spent copying and moving image data, and the core algorithms build up only a fraction of the processing cycle. In a deeper integration, where hardware specific tuning can be done (e.g. specific memory access primitives), the design target is to reach 10% or below.</p>
+
+<h2 id="sensors-needed:4a1318da06786ac52626178ca960109e">Sensors needed?</h2>
+
+<p>Vidhance does not need any hardware sensors, and can perform stabilization with great results using only video data (e.g. using the camera as the only sensor), using an in-house algorithm based on optical flow analysis. However, if rotation sensor data is available, this can easily be enabled as well to increase both performance and quality.</p>
+
+<h2 id="patents:4a1318da06786ac52626178ca960109e">Patents?</h2>
+
+<p>Vidhance core algorithms in motion estimation and stabilization are protected under US Patents. This can be valuable to mitigate risk of infringement claims from competitors, aiming to block or delay entrance into other markets.</p>
+
+<h2 id="competition:4a1318da06786ac52626178ca960109e">Competition?</h2>
+
+<p>Imint cannot get access to competitor’s solutions to perform own, detailed tests. Comparing results with leading phones for photo and video, such as the Apple iPhone6 and Sony Xperia Z3, Imint can demonstrate that Vidhance adds substantial quality gains in video stabilization. As for independent companies providing similar solutions, in Imint’s view, these are they key differentiators for Imint’s solution:</p>
+
+<ul>
+<li>Able to execute with minimal latency (no look-ahead buffer needed)</li>
+<li>Does not depend on (but can benefit from) additional sensor data</li>
+<li>Does not only dampen motion, but separates intentional from unintentional motions, and cancelling out the latter</li>
+<li>Smooth pass-through of motions to emulate rigs and tripods</li>
+<li>Open API with a rich level of configuration available for the integrator.</li>
+</ul>
+
+		
+		</main>
+	<footer></footer>
+</article>
+</section>
+	</main>
+	<footer>
+	
+	<p>copyright &copy; Imint Image Intelligence AB</p>
+</footer>
+
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/script/modernizr.js"></script>
+<script src="/script/main.js"></script>
+<script>
+	$(document).ready(function() {
+		
+
+		if($(window).width() > 831) {
+			$(window).scroll(function(e) {
+				if($(document).scrollTop() > 60) {
+					$('body > header').removeClass('no-animation');
+					$('body > nav').removeClass('no-animation');
+					$('body > header > a > img').removeClass('no-animation');
+					
+					$('body > header').addClass('scrolledDown');
+					$('body > nav').addClass('scrolledDown');
+				}
+				else {
+					$('body > header').removeClass('scrolledDown');
+					$('body > nav').removeClass('scrolledDown');
+				}
+			});
+		}
+
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+			$("video").prop("controls", true);
+		}
+	})
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+$('#downloadForm').on('submit', function(e) {
+	key = $("input:first").val();
+	url = "https://aurora.imint.se/data/"+key+"/vidhance-sdk-pc/vidhance_0.7.0_32bit.zip";
+	$('#hiddenIFrame').attr("src", url);
+	return false;
+});
+
+var $_Tawk_API={},$_Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/550802b2059b265f5423f78e/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<script>
+if (document.URL.search("localhost") == -1) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69480574-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+</html>
